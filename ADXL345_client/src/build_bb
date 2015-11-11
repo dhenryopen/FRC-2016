@@ -1,0 +1,2 @@
+#!/bin/sh
+g++ ADXL345_client.cpp -lboost_system -lpthread -o ADXL345_client
