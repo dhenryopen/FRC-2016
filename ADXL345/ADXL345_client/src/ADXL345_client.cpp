@@ -8,6 +8,8 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 
+// Modified to listen to an "adxl345_server" service on port 8081 (UDP)
+
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>

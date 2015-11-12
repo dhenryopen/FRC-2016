@@ -1,2 +1,0 @@
-#!/bin/bash
-g++ ADXL345Accelerometer.cpp Accelerometer_Test.cpp -o Accelerometer_Test
