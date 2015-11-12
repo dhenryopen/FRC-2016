@@ -26,7 +26,7 @@ int main()
     udp::socket socket(io_service, udp::endpoint(udp::v4(), 8081));
 
     ADXL345Accelerometer Accelerometer_Test(1, 0x53);
-    cout<<"Sending data for device ID: "<< hex << Accelerometer_Test.getAccelerometer_ID()<<endl;
+    cout<<"Device ID : "<< hex << Accelerometer_Test.getAccelerometer_ID()<<endl;
     Accelerometer_Test.SetPowerMode(0x01);
     Accelerometer_Test.getAccelerationData();
 
@@ -44,11 +44,20 @@ int main()
       usleep(250000);
       Accelerometer_Test.getAccelerationData();
 
-      std::stringstream readings;
-      readings << "X:" << dec <<Accelerometer_Test.getAcceleration_X() << " Y:" << dec <<Accelerometer_Test.getAcceleration_Y() << " Z:" << dec <<Accelerometer_Test.getAcceleration_Z() << " Pitch: " << dec << Accelerometer_Test.getPitch() << " Roll: " << dec << Accelerometer_Test.getRoll()<<endl;
+/*
+      std::stringstream ss;
+      ss << "X:" << dec <<Accelerometer_Test.getAcceleration_X() << " Y:" << dec <<Accelerometer_Test.getAcceleration_Y() << " Z:" << dec <<Accelerometer_Test.getAcceleration_Z() << " Pitch: " << dec << Accelerometer_Test.getPitch() << " Roll: " << dec << Accelerometer_Test.getRoll()<<endl;
 
-      std::string message = readings.str();
-//    cout << message;
+      std::string stdstr = ss.str();
+      cout << stdstr;
+      std::string message = stdstr;
+*/
+
+      std::stringstream ss;
+      ss << "X:" << dec <<Accelerometer_Test.getAcceleration_X() << " Y:" << dec <<Accelerometer_Test.getAcceleration_Y() << " Z:" << dec <<Accelerometer_Test.getAcceleration_Z() << " Pitch: " << dec << Accelerometer_Test.getPitch() << " Roll: " << dec << Accelerometer_Test.getRoll()<<endl;
+
+      std::string message = ss.str();
+      cout << message;
 
       boost::system::error_code ignored_error;
       socket.send_to(boost::asio::buffer(message),
@@ -62,4 +71,40 @@ int main()
 
   return 0;
 }
+
+/*
+// swapping ostringstream objects
+
+#include <string>       // std::string
+
+#include <iostream>     // std::cout
+
+#include <sstream>      // std::stringstream
+
+
+
+int main () {
+
+
+
+  std::stringstream ss;
+  ss << 100 << ' ' << 200;
+
+
+
+  int foo,bar;
+
+  ss >> foo >> bar;
+
+
+
+  std::cout << "foo: " << foo << '\n';
+
+  std::cout << "bar: " << bar << '\n';
+
+
+
+  return 0;
+
+}*/
 

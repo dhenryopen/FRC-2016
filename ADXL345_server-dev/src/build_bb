@@ -1,2 +1,2 @@
 #!/bin/sh
-g++ ADXL345_server.cpp -lboost_system -lpthread -o ADXL345_server
+g++ ADXL345Accelerometer.cpp ADXL345_server.cpp -lboost_system -lpthread -o ADXL345_server
