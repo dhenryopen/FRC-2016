@@ -96,6 +96,21 @@ Click _Create_ and the VM will be ready to power on.
 
 2. When you get to the Ubuntu _Welcome_ screen, choose your language, then select _Install Ubuntu_. Select both the _Download Updates While Installing_ and the _Install this third-party software_ option (for MP3 support). Click _Continue_, then confirm that you want to _Erase disk and install Ubuntu_.  This will not erase the host operating system's drive, only the space that has been allocated to Ubuntu.  Click _Install Now_, then _Continue_ to write the changes to the disk.
 
+
+3. When asked _Where are you?_, type in your location and choose an appropriate timezone.  Select the keyboard layout (the default is _English (US)_) and click _Continue_
+
+
+4. At the _Who are you?_ prompt, enter the following values:
+
+* **Your name:** frc
+* **Your computer's name:**  frc-VirtualBox
+* **Pick a username:**  frc
+* **Choose a password:**   frc2016
+
+Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu installer takes over at this point ...
+
+4. 
+
 (Unless otherwise noted, execute as root (via su)
 
 
