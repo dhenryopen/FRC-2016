@@ -11,7 +11,7 @@ All of the software used in the tutorial is available for free through open sour
 At the end of this tutorial you will understand how to:
 
 1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host an [Ubuntu Desktop](http://www.ubuntu.com/desktop) guest operating system
-1. Use an ISO DVD image to install and configure [Ubuntu Desktop 14.04.3 LTS](http://www.ubuntu.com/download/desktop) (Trusty Tahr)
+1. Use an ISO DVD image to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
 1. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
 1. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
 1. Run administrative commands as the root user using `sudo`
@@ -22,7 +22,28 @@ At the end of this tutorial you will understand how to:
 
 ## Prerequisites
 
-Before you begin you should have a working knowledge of the bash shell and common Linux commands such as `ls` and `cd`, and a text editor such as `vi`, `nano` or `gedit`. 
+### Knowledge
+Before you begin you should have a working knowledge of the bash shell and common Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
+
+Links: [linuxcommand.org](http://linuxcommand.org/), William Schott's free downloadable [book](http://sourceforge.net/projects/linuxcommand/files/TLCL/13.07/TLCL-13.07.pdf/download) is a good resource.
+
+### Software
+
+**Oracle VirtualBox**
+
+Oracle VirtualBox supports a variety of host operating systems including Windows, Linux and MacOS. Check the Oracle [support site](http://www.oracle.com/technetwork/server-storage/virtualbox/support/index.html) for the latest list. The tutorial was tested on Windows 10 Home (64-bit) with Oracle VirtualBox 5.0.10.
+
+Tip: if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.  If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.
+			
+**Ubuntu**
+
+At the time of writing (November 2015), the most commonly used version of Ubuntu is [Ubuntu 14.04.03 LTS](http://releases.ubuntu.com/14.04/) ("Long Term Support"), also known as "Trusty Tahr". DVD images (.iso files) are available for both 64-bit ([ubuntu-14.04.3-desktop-amd64.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso)) and 32-bit ([ubuntu-14.04.3-desktop-i386.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-desktop-i386.iso)) versions of Ubuntu. There is no need to burn these to a physical DVD as VirtualBox can read the .iso file directly from disk.
+
+**USB Webcam**
+
+Modern Linux distributions have good support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech C920 HD webcam which is available for under $100. Other cameras should work, including many webcams that are built into recently-manufactured laptops. 
+
+
 
 ## Tasks
 
@@ -32,12 +53,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 
 (Unless otherwise noted, execute as root (via su)
 
-	Optional:
-		Download and install Oracle VirtualBox (5.0.10 or higher) - http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html
-		Download Ubuntu ISO (ubuntu-14.04.3-desktop-amd64.iso) 14.04.3 or higher (http://releases.ubuntu.com/14.04/)
-			Note: if using an older 64-bit computer that doesn't support Intel virtualization technology (VT), you'll need to use the 32-bit ISO instead (ubuntu-14.04.3-desktop-i386.iso)
-			The Intel Processor Identification Utility can be used to determine if your CPU supports VT
-			https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi
+
 		Create a VirtualBox VM called "Ubuntu 14.04 (64-bit) - FRC development VM"
 			Virtual hardware: 2GB RAM (minimum), 15GB disk, 2 cpus (if on a quad-core host, otherwise 1 cpu)
 			Make sure to reference the Ubunto ISO file that you downloaded
