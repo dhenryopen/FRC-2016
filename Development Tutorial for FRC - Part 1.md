@@ -1,4 +1,4 @@
-# Development Tutorial for FRC - Part 1 (the Ubuntu VM)
+# Development Tutorial for FRC - Part 1 (the VM)
 
 ## Overview
 
@@ -13,7 +13,7 @@ At the end of this tutorial you will understand how to:
 1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host an [Ubuntu Desktop](http://www.ubuntu.com/desktop) guest operating system
 1. Use an ISO DVD image to install and configure [Ubuntu Desktop 14.04.3 LTS](http://www.ubuntu.com/download/desktop) (Trusty Tahr)
 1. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
-1. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar (wording)
+1. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
 1. Run administrative commands as the root user using `sudo`
 1. Use `apt-get` to refresh the package repository and install the latest Ubuntu software updates
 1. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
