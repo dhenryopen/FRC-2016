@@ -1,4 +1,5 @@
-# Development Tutorial for FRC - Part 1 (the VM)
+# Development Tutorial for FRC - Part 1 (the Basics)
+
 
 ## Overview
 
@@ -11,21 +12,39 @@ All of the software used in the tutorial is available for free through open sour
 At the end of this tutorial you will understand how to:
 
 1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host an [Ubuntu Desktop](http://www.ubuntu.com/desktop) guest operating system
-1. Use an ISO DVD image to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
-1. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
-1. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
-1. Run administrative commands as the root user using `sudo`
-1. Use `apt-get` to refresh the package repository and install the latest Ubuntu software updates
-1. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
-1. Install `git`, clone a GitHub repository and compile a basic C++ program to capture frames from the USB camera
-1. Install OpenCV and the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
+
+
+2. Use an ISO DVD image to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
+
+
+3. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
+
+
+4. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
+
+
+5. Run administrative commands as the root user using `sudo`
+
+
+6. Use `apt-get` to refresh the package repository and install the latest Ubuntu software updates
+
+
+7. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
+
+
+8. Install `git`, clone a GitHub repository and compile a basic C++ program to capture frames from the USB camera
+
+
+9. Install OpenCV and the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
 
 ## Prerequisites
 
 ### Knowledge
 Before you begin you should have a working knowledge of the bash shell and common Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
 
-Links: [linuxcommand.org](http://linuxcommand.org/), William Schott's free downloadable [book](http://sourceforge.net/projects/linuxcommand/files/TLCL/13.07/TLCL-13.07.pdf/download) is a good resource.
+**References:** 
+* [linuxcommand.org](http://linuxcommand.org/)
+* William Schott's [_The Linux Command Line_](http://sourceforge.net/projects/linuxcommand/files/TLCL/13.07/TLCL-13.07.pdf/download) (free download)
 
 ### Software
 
@@ -39,17 +58,34 @@ Tip: if you have an older 64-bit personal computer, check to see if the CPU supp
 
 At the time of writing (November 2015), the most commonly used version of Ubuntu is [Ubuntu 14.04.03 LTS](http://releases.ubuntu.com/14.04/) ("Long Term Support"), also known as "Trusty Tahr". DVD images (.iso files) are available for both 64-bit ([ubuntu-14.04.3-desktop-amd64.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso)) and 32-bit ([ubuntu-14.04.3-desktop-i386.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-desktop-i386.iso)) versions of Ubuntu. There is no need to burn these to a physical DVD as VirtualBox can read the .iso file directly from disk.
 
+### Hardware
+
+A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutorial. Disk space requirements as flexible.  The base Ubuntu Desktop installation consumes about 5.5GB of disk space (including swap space); plan to allocate several GB more for applications and temporary files.
+
 **USB Webcam**
 
-Modern Linux distributions have good support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech C920 HD webcam which is available for under $100. Other cameras should work, including many webcams that are built into recently-manufactured laptops. 
-
-
+Modern Linux distributions have good support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech [HD Pro Webcam C920 HD](http://www.logitech.com/en-us/product/hd-pro-webcam-c920) which is available for under $80 USD. Other USB cameras should work, including webcams that included with recently-manufactured laptops. 
 
 ## Tasks
 
-(WORK IN PROGRESS FROM HERE)
+**Install Oracle VirtualBox**
+1. [Download](https://www.virtualbox.org/wiki/Downloads) the VirtualBox installer for your operating system, then follow the instructions in Chapter 2 of the [_Oracle VirtualBox User Guide_](http://download.virtualbox.org/virtualbox/5.0.10/UserManual.pdf) to install the software
 
-### Setup:
+
+2. After starting VirtualBox, click on the _New_ icon to start the _Create Virtual Machine_ wizard. Use the following parameters to create the VM:
+
+* **Name:** Ubuntu 14.04 Development VM for FRC
+* **Type:** Linux
+* **Version:** Ubuntu (64-bit) or (32-bit)
+* **Memory Size:** 2048MB
+* **Create a virtual hard disk now:** yes
+* **Hard disk file type:** VDI (default)
+* **Storage on physical hard disk:** dynamically allocated (default)
+* **File location and size:** default location, 10GB
+
+Click _Create_ and the VM will be ready to power on. 
+
+3. Right click on the new VM and select *Start --> Normal Start*. When prompted to *Select a Startup Disk*, open the folder and navigate to the location where you downloaded the Ubuntu .iso file, then click *Start*.
 
 (Unless otherwise noted, execute as root (via su)
 
