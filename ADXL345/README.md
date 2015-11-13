@@ -12,3 +12,4 @@ To-dos:
 2. Add command-line options (-p for port, -h for help, -l for logging)
 3. Modify to use coordinates from an OpenCV image detection routine (to support automated tracking)
 4. Add UDP client timeout
+5. Move to MQTT
