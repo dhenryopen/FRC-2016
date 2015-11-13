@@ -2,9 +2,9 @@
 
 ## Overview
 
-Top-level FRC teams use a variety of programming languages to integrate useful 3rd-party libraries such as [OpenCV](http://opencv.org). While these languages have a steep learning curve, a number of useful working examples are available on [GitHub](http://www.github.com). The challenge many teams face is developing the skills to download, configure and test all of the moving parts. The purpose of this tutorial is to help teams mentor beginning developers so they can assist experienced developers with the build / deploy / test lifecycle. The tutorial is not meant to be a replacement for the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simpler starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  These skill developed in this tutorial can be applied to external "sidecar" boards such as the Beaglebone and NVIDIA Tegra TK1.
+Top-level FRC teams use a variety of programming languages to integrate useful 3rd-party libraries such as [OpenCV](http://opencv.org). While these languages have a steep learning curve, a number of useful working examples are available on [GitHub](http://www.github.com). The challenge many teams face is developing the skills to download, configure and test all of the moving parts. The purpose of this tutorial is to help teams mentor beginning developers so they can assist experienced developers with the build / deploy / test lifecycle. The tutorial is not meant to be a replacement for the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simpler starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  The skill developed in this tutorial can be applied to programming external "sidecar" boards such as the Beaglebone and NVIDIA Tegra TK1.
 
-All of the software used in the tutorial is available for free through open source licenses
+All of the software used in the tutorial is available for free through open source licenses.
 
 ## Learning Objectives
 
