@@ -28,7 +28,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 
 (WORK IN PROGRESS FROM HERE)
 
-**Setup:
+### Setup:
 
 (Unless otherwise noted, execute as root (via su)
 
@@ -55,13 +55,13 @@ Before you begin you should have a working knowledge of the bash shell and commo
             After the kernel has been rebuilt, reboot
         (http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack)
 
-**Uprade to the latest Ubuntu packages:
+### Uprade to the latest Ubuntu packages:
 
 	Execute:
 		sudo apt-get update	
 		sudo apt-get upgrade
 
-**Install git, build-essentials
+### Install git, build-essentials
 
 	Links:
 		https://help.ubuntu.com/community/CompilingEasyHowTo
@@ -75,7 +75,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 	Note:
 		At this point version of 4.8.4 of gcc will be installed
 
-**Test connectivity to your USB camera using v4l
+### Test connectivity to your USB camera using v4l
 
 		Execute:
 			apt-get install v4l-utils
@@ -83,7 +83,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
 
 		
-**Install OpenCV-apps
+### Install OpenCV and apps
 
 		Links
 			https://help.ubuntu.com/community/OpenCV
@@ -102,7 +102,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 			cd $HOME/software
 			mv Install-OpenCV/Ubuntu/OpenCV/ .
 		
-**Build the OpenCV sample
+### Build the OpenCV sample
 
 		Execute
 			cd OpenCV/opencv-3.0.0/samples/cpp/example_cmake/
@@ -113,12 +113,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 
 		Execute:
 			
-**Install Boost libraries for C++ (e.g. asio for sockets)
-
-		Execute:
-			sudo apt-get install libboost-all-dev
-			
-**Clone Derek Molloy's BoneCV repository
+### Clone Derek Molloy's BoneCV repository
 
 		Links:
 			http://derekmolloy.ie/beaglebone/beaglebone-video-capture-and-image-processing-on-embedded-linux-using-opencv/
