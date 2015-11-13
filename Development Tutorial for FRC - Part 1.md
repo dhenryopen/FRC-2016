@@ -60,6 +60,8 @@ At the time of writing (November 2015), the most commonly used version of Ubuntu
 
 ### Hardware
 
+**The Host Machine**
+
 A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutorial. Disk space requirements as flexible.  The base Ubuntu Desktop installation consumes about 5.5GB of disk space (including swap space); plan to allocate several GB more for applications and temporary files.
 
 **USB Webcam**
@@ -69,6 +71,7 @@ Modern Linux distributions have good support for USB-based webcams. The [Ubuntu 
 ## Tasks
 
 **Install Oracle VirtualBox**
+
 1. [Download](https://www.virtualbox.org/wiki/Downloads) the VirtualBox installer for your operating system, then follow the instructions in Chapter 2 of the [_Oracle VirtualBox User Guide_](http://download.virtualbox.org/virtualbox/5.0.10/UserManual.pdf) to install the software
 
 
@@ -85,7 +88,13 @@ Modern Linux distributions have good support for USB-based webcams. The [Ubuntu 
 
 Click _Create_ and the VM will be ready to power on. 
 
-3. Right click on the new VM and select *Start --> Normal Start*. When prompted to *Select a Startup Disk*, open the folder and navigate to the location where you downloaded the Ubuntu .iso file, then click *Start*.
+**Install Ubuntu**
+
+
+1. Right click on the new VM and select *Start --> Normal Start*. When prompted to *Select a Startup Disk*, open the folder and navigate to the location where you downloaded the Ubuntu .iso file, then click *Start*.
+
+
+2. When you get to the Ubuntu _Welcome_ screen, choose your language, then select _Install Ubuntu_. Select both the _Download Updates While Installing_ and the _Install this third-party software_ option (for MP3 support). Click _Continue_, then confirm that you want to _Erase disk and install Ubuntu_.  This will not erase the host operating system's drive, only the space that has been allocated to Ubuntu.  Click _Install Now_, then _Continue_ to write the changes to the disk.
 
 (Unless otherwise noted, execute as root (via su)
 
