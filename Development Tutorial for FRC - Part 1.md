@@ -107,9 +107,13 @@ Click _Create_ and the VM will be ready to power on.
 * **Pick a username:**  frc
 * **Choose a password:**   frc2016
 
-Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu installer takes over at this point ...
+Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu installer takes over at this point. When the installation is complete, reboot the VM. [Note: it may be necessary to press _[Enter]_ within the VM window to get Ubuntu to restart.]
 
-4. 
+**Add the VirtualBox Extensions**
+
+The VirtualBox Extensions must be installed to support higher screen resolution and to support USB devices and the webcam.
+
+1. From the VirtualBox main menu, select _Devices_, then _Install Guest Additions CD image_
 
 (Unless otherwise noted, execute as root (via su)
 
