@@ -146,8 +146,7 @@ sudo apt-get upgrade
 * The [`cmake`](https://cmake.org/) package contains the cross-platform build system used by OpenCV and other libraries
 
 
-* The [`v4l-utils`](http://packages.ubuntu.com/trusty/v4l-utils) package provides utilities for managing the video devices which are visible to Ubuntu
-
+* The [`v4l-utils`](http://packages.ubuntu.com/trusty/v4l-utils) package provides utilities for inspecting and controlling video devices 
 
 ```
 sudo apt-get install build-essential checkinstall
@@ -221,20 +220,25 @@ sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
 sudo apt-get install libopencv-dev
 ```
 
-1. Use `wget` to get the OpenCV 2.4.11 source code:
+
+2. Use `wget` to get the OpenCV 2.4.11 source code:
 ```
 cd ~
 wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.11/opencv-2.4.11.zip
 unzip opencv-2.4.11.zip
 ```
 
-2. Now change directories to the samples directory and compile `facedetect.cpp`:
+Note: OpennCV 3.0 is the latest version of OpenCV, but Ubuntu 14.04 comes with OpenCV 2.4 already installed, allowing us to use the pre-built libraries in `/usr/lib/i386-linux-gnu`
+
+
+3. Now change directories to the samples directory and compile `facedetect.cpp`:
 ```
 cd opencv-2.4.11/samples/c
 g++ facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
 ```
 
-3. Now for the fruits of our labors! :)
+
+4. And finally, the fruits of our labors! :)
 
 ```
 ./facedetect
