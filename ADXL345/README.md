@@ -9,7 +9,7 @@ The client was developed and tested on Ubuntu 14.04.
 To-dos:
 
 1. Port to NVIDIA Tegra TK1
-2. Add command-line options (-p for port, -h for help, -l for logging)
+2. Add command-line options (-p for port, -h for help, -l for logging, -j for JSON output)
 3. Modify to use coordinates from an OpenCV image detection routine (to support automated tracking)
 4. Add UDP client timeout
 5. Move to MQTT
