@@ -6,7 +6,7 @@
 Competitive FRC teams use a variety of programming languages to integrate 3rd-party libraries that support external inputs. An example is [OpenCV](http://opencv.org) which is heavily used for image detection and object tracking. While these libraries have a steep learning curve, the FRC community has made a number of working examples available on [GitHub](http://www.github.com). The challenge many rookie teams face is developing the skills to download, compile and test all of the moving parts. 
 
 
-The purpose of this tutorial is to mentor beginning developers so they can assist experienced developers with the build / deploy / test lifecycle. The tutorial is not meant to replace the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simple starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  The tutorial takes students through all of the steps required to get the OpenCV [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example running on their computer. All of the software components are available through open source licenses.
+The purpose of this tutorial is to give beginning developers some basic skills so they can assist experienced developers with building and testing solutions. The tutorial is not meant to replace the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simple starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  The tutorial takes students through all of the steps required to get the OpenCV [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example running on their computer. All of the software components are available through open source licenses.
 
 ## Learning Objectives
 
@@ -21,13 +21,13 @@ At the end of this tutorial you'll understand how to:
 3. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through from host to guest
 
 
-4. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
+4. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar for easy access
 
 
 5. Run administrative commands as the root user using `sudo`
 
 
-6. Use `apt-get` to refresh the package repository and install the latest Ubuntu software updates
+6. Use `apt-get` to refresh the package repository and install the latest Ubuntu updates
 
 
 7. Install a USB video camera and test its operation using the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese) and the [Video for Linux](http://www.linuxtv.org/) utilities
@@ -38,7 +38,7 @@ At the end of this tutorial you'll understand how to:
 ## Prerequisites
 
 ### Knowledge
-Before you begin you should have a basic working knowledge of the bash shell and Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
+Before you begin you should have a basic working knowledge of the `bash` shell and Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
 
 **Documentation:** 
 * [linuxcommand.org](http://linuxcommand.org/)
@@ -50,23 +50,25 @@ Before you begin you should have a basic working knowledge of the bash shell and
 
 Oracle VirtualBox supports a variety of host operating systems including Windows, Linux and MacOS. Check the Oracle [support site](http://www.oracle.com/technetwork/server-storage/virtualbox/support/index.html) for the latest list. The tutorial was tested on Windows 10 Home (64-bit) with Oracle VirtualBox 5.0.10.
 
-**Tip:** if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.   <u>If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.</u>
+**Tip:** if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system in VirtualBox. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.   <u>If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.</u>
 			
 **Ubuntu**
 
-At the time of writing (November 2015), the most commonly used version of Ubuntu is [Ubuntu 14.04.03 LTS](http://releases.ubuntu.com/14.04/) ("Long Term Support"), also known as "Trusty Tahr". DVD images (.iso files) are available for both 64-bit ([ubuntu-14.04.3-desktop-amd64.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso)) and 32-bit ([ubuntu-14.04.3-desktop-i386.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-desktop-i386.iso)) versions of Ubuntu. There is no need to burn these to a physical DVD as VirtualBox can read the .iso file directly from disk.
+At the time of writing (November 2015), the most commonly used version of Ubuntu is [Ubuntu 14.04.03 LTS](http://releases.ubuntu.com/14.04/) ("Long Term Support"), also known as "Trusty Tahr". DVD images (.iso files) are available for both 64-bit ([ubuntu-14.04.3-desktop-amd64.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso)) and 32-bit ([ubuntu-14.04.3-desktop-i386.iso](http://releases.ubuntu.com/14.04/ubuntu-14.04.3-desktop-i386.iso)) versions of Ubuntu. There's no need to burn these to a physical DVD as VirtualBox can read the .iso file directly from disk.
 
 ### Hardware
 
 **Host Machine**
 
-A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutorial. Disk space requirements as flexible.  The base Ubuntu Desktop installation consumes about 5.5GB of disk space (including swap space); plan to allocate several GB more for applications and temporary files.
+A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutorial. Disk space requirements as flexible.  The base Ubuntu Desktop installation consumes about 5.5GB of disk space (including swap space); plan to allocate several GB more for applications and temporary files. At the end of the tutorial you'll have approximately 3GB of free space available.
 
 **USB Webcam**
 
-Modern Linux distributions have good support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech [HD Pro Webcam C920 HD](http://www.logitech.com/en-us/product/hd-pro-webcam-c920) which is available for under $80 USD. Other USB cameras should work, including webcams that included with recently-manufactured laptops. 
+Modern Linux distributions have built-in support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech [HD Pro Webcam C920 HD](http://www.logitech.com/en-us/product/hd-pro-webcam-c920) which is available for under $80 USD. Other USB cameras should work, including webcams that are built into laptops. 
 
-_You'll need to be connected to the internet to perform the tutorial_.
+### Internet Access
+
+You'll need to be connected to the Internet to perform software updates and package installations.
 
 ## Tasks
 
@@ -111,12 +113,13 @@ Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu install
 
 **Add the VirtualBox Extensions**
 
-The VirtualBox Extensions must be installed to support higher screen resolution and to support USB devices and the webcam.
+The VirtualBox Extensions must be installed to support higher screen resolution, USB devices and the webcam.
 
 1. From the VirtualBox main menu, select _Devices_, _Optical Drives_, and make sure that VBoxGuestAdditions.iso is checked.
 
 
-2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu
+2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu.
+
 
 3. After rebooting, log into Ubuntu. Resize the virtual machine's window to ensure that high-resolution display modes are now supported.
 
@@ -136,7 +139,7 @@ You now have access to the _Bash_ shell. Type the following two commands to upda
 sudo apt-get update
 sudo apt-get upgrade
 ```
-**Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name.
+**Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name. This gives you the ability to "roll back" the VM to a known state.
 
 ### Install the `build-essential`, `cmake` and `v4l-utils` packages
 
@@ -155,17 +158,17 @@ sudo apt-get install v4l-utils
 ```
 
 
-### Test connectivity to your USB camera using v4l and the Cheese application
+### Test connectivity to your USB camera using the Video 4 Linux utilities and the Cheese Webcam Booth
 
-Before compiling the _facedetect_ example, configure and test connctivity to your USB camera
+Before compiling the _facedetect_ example, configure and test connctivity to your USB camera:
 
-1. From the VirtualBox main menu, select _Devices_, then _Webcams_ and make sure that your camera has been selected
-
-
-2. From the desktop launcher menu, search for "Cheese Webcam Booth".  Run this application -- within a few seconds the camera feed should appear on the screen
+1. From the VirtualBox main menu, select _Devices_, then _Webcams_ and make sure your camera has been selected
 
 
-3. From the Bash shell, use the `v4l2-ctl` program to get the characteristics of your webcam:
+2. From the desktop launcher menu, search for "Cheese Webcam Booth".  Run this application -- within a few seconds the camera feed should appear on the screen. Close the application to release the connection to the webcam.
+
+
+3. From the Bash shell, use the `v4l2-ctl` program to inspect the characteristics of your webcam:
 
 ```
 v4l2-ctl --all
@@ -206,8 +209,8 @@ Streaming Parameters Video Capture:
                      brightness (int)    : min=0 max=100 step=1 default=50 value=50
 ```
 
-**Tip**: Derek Molloy's website has a lot of useful information on this subject.  Although written for the Beaglebone, the v4l-utils examples can be used on "vanilla" Ubunutu:
-		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
+**Tip**: Derek Molloy's website (http://derekmolloy.ie/beaglebone-images-video-and-opencv/) has a lot of useful information on this subject.  Although written for the Beaglebone, the v4l-utils examples can be used on "vanilla" Ubunutu.
+		
 		
 ### Build and test the OpenCV _facedetect_ sample program:
 
@@ -226,23 +229,23 @@ wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.11/open
 unzip opencv-2.4.11.zip
 ```
 
-Note: OpenCV 3.0 is the latest version of OpenCV, but Ubuntu 14.04 comes with OpenCV 2.4 already installed, allowing us to use the pre-built libraries in `/usr/lib/i386-linux-gnu`
+Note: OpenCV 3.0 is the latest version of OpenCV, but Ubuntu 14.04 comes with OpenCV 2.4 already installed, allowing us to use the pre-built libraries in `/usr/lib/i386-linux-gnu`.
 
 
-3. Now change directories to the samples directory and compile `facedetect.cpp`:
+3. Now change to the samples directory and compile `facedetect.cpp`:
 ```
 cd opencv-2.4.11/samples/c
 g++ facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
 ```
 
 
-4. And finally, the fruits of our labors! :)
+4. And finally, the fruits of your labor! :)
 
 ```
 ./facedetect
 ```
 
-(To end the program, type ^C in the terminal window)
+To end the program, type ^C in the terminal window.   If you want to experiment further, remember to take a snaphost of the VM so you can roll-back and return to where you started.
 
 ## What's Next?
 
