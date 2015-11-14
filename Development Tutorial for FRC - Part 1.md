@@ -52,7 +52,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 
 Oracle VirtualBox supports a variety of host operating systems including Windows, Linux and MacOS. Check the Oracle [support site](http://www.oracle.com/technetwork/server-storage/virtualbox/support/index.html) for the latest list. The tutorial was tested on Windows 10 Home (64-bit) with Oracle VirtualBox 5.0.10.
 
-Tip: if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.  If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.
+**Tip:** if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.  If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.
 			
 **Ubuntu**
 
@@ -107,7 +107,7 @@ Click _Create_ and the VM will be ready to power on.
 * **Pick a username:**  frc
 * **Choose a password:**   frc2016
 
-Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu installer takes over at this point. When the installation is complete, reboot the VM. [Note: it may be necessary to press _[Enter]_ within the VM window to get Ubuntu to restart.]
+Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu installer takes over at this point. When the installation is complete, reboot the VM. [Note: it may be necessary to press _Enter_ within the VM window to get Ubuntu to restart.]
 
 **Add the VirtualBox Extensions**
 
@@ -118,15 +118,23 @@ The VirtualBox Extensions must be installed to support higher screen resolution 
 
 2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu
 
-### Add the _terminal_ application to the Unity desktop launcher
+### Add the _terminal_ application to the [Unity](https://unity.ubuntu.com/) desktop launcher
 
-### Uprade to the latest Ubuntu packages:
+The desktop launcher is the vertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal.
 
-	Execute:
-		sudo apt-get update	
-		sudo apt-get upgrade
+### Uprade to the latest Ubuntu 14.04 packages:
+
+You now have access to the _Bash_ shell. Type the following two commands to update the system repository and upgrade to the latest  packages.  You'll be prompted to enter the _frc_ user's password to authenticate:
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
+**Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name.
 
 ### Install git, build-essentials
+
+To prepare
 
 	Links:
 		https://help.ubuntu.com/community/CompilingEasyHowTo
