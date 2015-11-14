@@ -97,7 +97,7 @@ Click _Create_ and the VM will be ready to power on.
 2. When you get to the Ubuntu _Welcome_ screen, choose your language, then select _Install Ubuntu_. Select both the _Download Updates While Installing_ and the _Install this third-party software_ option (for MP3 support). Click _Continue_, then confirm that you want to _Erase disk and install Ubuntu_.  This will not erase the host operating system's drive, only the space that has been allocated to Ubuntu.  Click _Install Now_, then _Continue_ to write the changes to the disk.
 
 
-3. When asked _Where are you?_, type in your location and choose an appropriate timezone.  Select the keyboard layout (the default is _English (US)_) and click _Continue_
+3. When asked _Where are you?_, type in your location and choose an appropriate timezone.  Select the keyboard layout (the default is _English (US)_) and click _Continue_.
 
 
 4. At the _Who are you?_ prompt, enter the following values:
@@ -113,27 +113,12 @@ Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu install
 
 The VirtualBox Extensions must be installed to support higher screen resolution and to support USB devices and the webcam.
 
-1. From the VirtualBox main menu, select _Devices_, then _Install Guest Additions CD image_
-
-(Unless otherwise noted, execute as root (via su)
+1. From the VirtualBox main menu, select _Devices_, _Optical Drives_, and make sure that VBoxGuestAdditions.iso is checked.
 
 
-		Create a VirtualBox VM called "Ubuntu 14.04 (64-bit) - FRC development VM"
-			Virtual hardware: 2GB RAM (minimum), 15GB disk, 2 cpus (if on a quad-core host, otherwise 1 cpu)
-			Make sure to reference the Ubunto ISO file that you downloaded
-			Check "Download updates will installing" and "install this third-party software (Fluendo MP3)"
-			Select your TZ (Pacific - Los Angeles)
-			In the "who are you?" prompt, use the following values:
-				Your name: frc
-				Your computer's name: frc-VirtualBox
-				Pick a username: frc
-				Choose a password:  frc2016
-				Check "Log in automatically"
-		Add VirtualBox extensions to increase screen resolution and support USB devices
-        	Mount the Guest Additions CD
-            When prompted to run VBOXADDITIONS_5.0.10_104061", press OK
-            After the kernel has been rebuilt, reboot
-        (http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack)
+2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu
+
+### Add the _terminal_ application to the Unity desktop launcher
 
 ### Uprade to the latest Ubuntu packages:
 
