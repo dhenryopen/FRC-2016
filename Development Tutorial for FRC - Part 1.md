@@ -120,7 +120,11 @@ The VirtualBox Extensions must be installed to support higher screen resolution 
 
 ### Add the _terminal_ application to the [Unity](https://unity.ubuntu.com/) desktop launcher
 
-The desktop launcher is the svertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal.
+The desktop launcher is the svertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal. You should see the following prompt:
+
+```
+frc@frc-VirtualBox:~$
+```
 
 ### Uprade to the latest Ubuntu 14.04 packages:
 
@@ -142,22 +146,13 @@ sudo apt-get upgrade
 
 * The [`v4l-utils`](http://packages.ubuntu.com/trusty/v4l-utils) package provides utilities for managing the video devices which are visible to Ubuntu
 
-	Links:
-		https://help.ubuntu.com/community/CompilingEasyHowTo
-
-	Execute:
-		sudo apt-get install build-essential checkinstall
-		sudo apt-get install git-core
-		sudo chown $USER /usr/local/src
-		sudo chmod u+rwx /usr/local/src
-
-	Note:
-		At this point version of 4.8.4 of gcc will be installed
+```
+sudo apt-get install build-essential checkinstall
+sudo apt-get install git-core
+apt-get install v4l-utils
+```
 
 ### Test connectivity to your USB camera using v4l
-
-		Execute:
-			apt-get install v4l-utils
 			
 		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
 
