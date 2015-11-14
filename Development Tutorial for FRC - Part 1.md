@@ -9,12 +9,12 @@ All of the software used in the tutorial is available for free through open sour
 
 ## Learning Objectives
 
-At the end of this tutorial you will understand how to:
+At the end of this tutorial yyou'll understand how to:
 
-1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host an [Ubuntu Desktop](http://www.ubuntu.com/desktop) guest operating system
+1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host [Ubuntu](http://www.ubuntu.com/desktop) as a guest operating system
 
 
-2. Use an ISO DVD image to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
+2. Use a DVD image (.iso) to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
 
 
 3. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
@@ -32,10 +32,7 @@ At the end of this tutorial you will understand how to:
 7. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
 
 
-8. Install `git`, clone a GitHub repository and compile a basic C++ program to capture frames from the USB camera
-
-
-9. Install OpenCV and the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
+8. Install the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
 
 ## Prerequisites
 
@@ -60,7 +57,7 @@ At the time of writing (November 2015), the most commonly used version of Ubuntu
 
 ### Hardware
 
-**The Host Machine**
+**Host Machine**
 
 A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutorial. Disk space requirements as flexible.  The base Ubuntu Desktop installation consumes about 5.5GB of disk space (including swap space); plan to allocate several GB more for applications and temporary files.
 
@@ -118,7 +115,7 @@ The VirtualBox Extensions must be installed to support higher screen resolution 
 
 2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu
 
-### Add the _terminal_ application to the [Unity](https://unity.ubuntu.com/) desktop launcher
+### Add the `terminal` application to the [Unity](https://unity.ubuntu.com/) desktop launcher
 
 The desktop launcher is the svertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal. You should see the following prompt:
 
@@ -153,12 +150,63 @@ sudo apt-get upgrade
 ```
 sudo apt-get install build-essential checkinstall
 sudo apt-get install git-core
+sudo apt-get install cmake
 sudo apt-get install v4l-utils
-sudo apt-get install cmake	
 ```
 
-### Test connectivity to your USB camera using v4l
-			
+
+### Test connectivity to your USB camera using v4l and the Cheese application
+
+Before compiling the _facedetect_ example, configure and test connctivity to your USB camera
+
+1. From the VirtualBox main menu, select _Devices_, then _Webcams_ and make sure that your camera has been selected
+
+
+2. From the desktop launcher menu, search for "Cheese Webcam Booth".  Run this application -- within a few seconds the camera feed should appear on the screen
+
+
+3. From the Bash shell, use the `v4l2-ctl` program to get the characteristics of your webcam:
+
+```
+v4l2-ctl --all
+```
+You should see something like this (the details will be specific to your Webcam hardware):
+
+```
+Driver Info (not using libv4l2):
+	Driver name   : uvcvideo
+	Card type     : VirtualBox Webcam - HP Truevisi
+	Bus info      : usb-0000:00:06.0-2
+	Driver version: 3.19.8
+	Capabilities  : 0x84200001
+		Video Capture
+		Streaming
+		Device Capabilities
+	Device Caps   : 0x04200001
+		Video Capture
+		Streaming
+Priority: 2
+Video input : 0 (Camera 1: ok)
+Format Video Capture:
+	Width/Height  : 1280/720
+	Pixel Format  : 'MJPG'
+	Field         : None
+	Bytes per Line: 0
+	Size Image    : 1228800
+	Colorspace    : SRGB
+	Custom Info   : feedcafe
+Crop Capability Video Capture:
+	Bounds      : Left 0, Top 0, Width 1280, Height 720
+	Default     : Left 0, Top 0, Width 1280, Height 720
+	Pixel Aspect: 1/1
+Streaming Parameters Video Capture:
+	Capabilities     : timeperframe
+	Frames per second: 30.000 (30/1)
+	Read buffers     : 0
+                     brightness (int)    : min=0 max=100 step=1 default=50 value=50
+```
+
+**Tip**: Derek Molloy's website has a lot of useful information on this subject.  Although written for the Beaglebone, the v4l-utils examples can be used on "vanilla" Ubunutu:
 		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
 
 		
