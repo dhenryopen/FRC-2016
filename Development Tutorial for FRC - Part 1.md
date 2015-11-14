@@ -136,7 +136,7 @@ sudo apt-get upgrade
 ```
 **Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name.
 
-### Install the `git`, `build-essentials` and `v4l-utils` packages
+### Install the `git`, `build-essentials`, `cmake` and `v4l-utils` packages
 
 * The [`git`](http://packages.ubuntu.com/trusty/git) package allows developers to clone source code repositories and post updates
 
@@ -144,13 +144,17 @@ sudo apt-get upgrade
 * The [`build-essential`](http://packages.ubuntu.com/trusty/build-essential) package provides the GNU C and C++ compilers and core libraries
 
 
+* The [`cmake`](https://cmake.org/) package contains the cross-platform build system used by OpenCV and other libraries
+
+
 * The [`v4l-utils`](http://packages.ubuntu.com/trusty/v4l-utils) package provides utilities for managing the video devices which are visible to Ubuntu
+
 
 ```
 sudo apt-get install build-essential checkinstall
 sudo apt-get install git-core
 sudo apt-get install v4l-utils
-sudo apt-get isntall cmake	
+sudo apt-get install cmake	
 ```
 
 ### Test connectivity to your USB camera using v4l
