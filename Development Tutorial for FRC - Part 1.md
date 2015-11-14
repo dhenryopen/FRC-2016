@@ -149,7 +149,8 @@ sudo apt-get upgrade
 ```
 sudo apt-get install build-essential checkinstall
 sudo apt-get install git-core
-apt-get install v4l-utils
+sudo apt-get install v4l-utils
+sudo apt-get isntall cmake	
 ```
 
 ### Test connectivity to your USB camera using v4l
@@ -157,24 +158,19 @@ apt-get install v4l-utils
 		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
 
 		
-### Install OpenCV and apps
+### Install OpenCV 3.0 and samples
 
-		Links
-			https://help.ubuntu.com/community/OpenCV
-			https://github.com/jayrambhia/Install-OpenCV/blob/master/Ubuntu/opencv_install.sh
-
-		Execute:
-			cd $HOME/software
-			git https://github.com/jayrambhia/Install-OpenCV.git
-			cd Install-OpenCV/Ubuntu
-			./opencv_latest.sh
-
-			(Notes: 
-				1. The build process will run for a long time
-				2. When done, make the software more accessible)
-
-			cd $HOME/software
-			mv Install-OpenCV/Ubuntu/OpenCV/ .
+```
+Go to opencv.org, download 2.4.11 for Linux/Mac (https://github.com/itseez/opencv/archive/2.4.11.zip)
+For OpenCV 2.4.x 
+cd /path/to/opencv/samples/c/
+For OpenCV 3 
+cd /path/to/opencv/samples/cpp/
+#Compile
+g++ -ggdb `pkg-config --cflags --libs opencv` facedetect.cpp -o facedetect
+#run
+./facedetect
+```
 		
 ### Build the OpenCV sample
 
