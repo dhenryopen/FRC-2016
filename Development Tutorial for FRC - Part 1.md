@@ -32,7 +32,7 @@ At the end of this tutorial yyou'll understand how to:
 7. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
 
 
-8. Install the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
+8. Install the OpenCV prerequisites and the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
 
 ## Prerequisites
 
@@ -64,6 +64,8 @@ A laptop, PC or Mac with 2GB of *available* RAM should be enough for the tutoria
 **USB Webcam**
 
 Modern Linux distributions have good support for USB-based webcams. The [Ubuntu Webcam wiki](https://help.ubuntu.com/community/Webcam) provides a good overview.  The tutorial was tested with a Logitech [HD Pro Webcam C920 HD](http://www.logitech.com/en-us/product/hd-pro-webcam-c920) which is available for under $80 USD. Other USB cameras should work, including webcams that included with recently-manufactured laptops. 
+
+_You'll need to be connected to the internet to perform the tutorial_.
 
 ## Tasks
 
@@ -208,44 +210,36 @@ Streaming Parameters Video Capture:
 
 **Tip**: Derek Molloy's website has a lot of useful information on this subject.  Although written for the Beaglebone, the v4l-utils examples can be used on "vanilla" Ubunutu:
 		http://derekmolloy.ie/beaglebone-images-video-and-opencv/
-
 		
-### Install OpenCV 3.0 and samples
+### Build and test the OpenCV _facedetect_ sample program:
+
+1. Install the prerequisite packages for OpenCV development:
 
 ```
-Go to opencv.org, download 2.4.11 for Linux/Mac (https://github.com/itseez/opencv/archive/2.4.11.zip)
-For OpenCV 2.4.x 
-cd /path/to/opencv/samples/c/
-For OpenCV 3 
-cd /path/to/opencv/samples/cpp/
-#Compile
-g++ -ggdb `pkg-config --cflags --libs opencv` facedetect.cpp -o facedetect
-#run
+sudo apt-get install synaptic
+sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
+sudo apt-get install libopencv-dev
+```
+
+1. Use `wget` to get the OpenCV 2.4.11 source code:
+```
+cd ~
+wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.11/opencv-2.4.11.zip
+unzip opencv-2.4.11.zip
+```
+
+2. Now change directories to the samples directory and compile `facedetect.cpp`:
+```
+cd opencv-2.4.11/samples/c
+g++ facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
+```
+
+3. Now for the fruits of our labors! :)
+
+```
 ./facedetect
 ```
-		
-### Build the OpenCV sample
 
-		Execute
-			cd OpenCV/opencv-3.0.0/samples/cpp/example_cmake/
-			make
-			./opencv_example
+(To end the program, type ^C in the terminal window)
 
-			(Note: this should launch an OpenGL application that interacts with your webcam (i.e. /dev/video0))
 
-		Execute:
-			
-### Clone Derek Molloy's BoneCV repository
-
-		Links:
-			http://derekmolloy.ie/beaglebone/beaglebone-video-capture-and-image-processing-on-embedded-linux-using-opencv/
-
-		Execute: (from $HOME, as a normal user)
-			mkdir software
-			cd software
-			git clone https://github.com/derekmolloy/boneCV.git
-			cd boneCV
-			rm boneCV boneCVtiming capture grabber
-			gcc capture.c
-			gcc grabberlc -lv4l2
-			
