@@ -120,7 +120,7 @@ The VirtualBox Extensions must be installed to support higher screen resolution 
 
 ### Add the _terminal_ application to the [Unity](https://unity.ubuntu.com/) desktop launcher
 
-The desktop launcher is the vertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal.
+The desktop launcher is the svertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal.
 
 ### Uprade to the latest Ubuntu 14.04 packages:
 
@@ -132,9 +132,15 @@ sudo apt-get upgrade
 ```
 **Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name.
 
-### Install git, build-essentials
+### Install the `git`, `build-essentials` and `v4l-utils` packages
 
-To prepare
+* The [`git`](http://packages.ubuntu.com/trusty/git) package allows developers to clone source code repositories and post updates
+
+
+* The [`build-essential`](http://packages.ubuntu.com/trusty/build-essential) package provides the GNU C and C++ compilers and core libraries
+
+
+* The [`v4l-utils`](http://packages.ubuntu.com/trusty/v4l-utils) package provides utilities for managing the video devices which are visible to Ubuntu
 
 	Links:
 		https://help.ubuntu.com/community/CompilingEasyHowTo
