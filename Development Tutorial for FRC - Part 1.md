@@ -3,21 +3,22 @@
 
 ## Overview
 
-Top-level FRC teams use a variety of programming languages to integrate useful 3rd-party libraries such as [OpenCV](http://opencv.org). While these languages have a steep learning curve, a number of useful working examples are available on [GitHub](http://www.github.com). The challenge many teams face is developing the skills to download, configure and test all of the moving parts. The purpose of this tutorial is to help teams mentor beginning developers so they can assist experienced developers with the build / deploy / test lifecycle. The tutorial is not meant to be a replacement for the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simpler starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  The skill developed in this tutorial can be applied to programming external "sidecar" boards such as the [Beaglebone](http://beagleboard.org/bone) and [NVIDIA Jetson TK1](https://developer.nvidia.com/embedded/develop/hardware).
+Competitive FRC teams use a variety of programming languages to integrate 3rd-party libraries that support external inputs. An example is [OpenCV](http://opencv.org) which is heavily used for image detection and object tracking. While these libraries have a steep learning curve, the FRC community has made a number of working examples available on [GitHub](http://www.github.com). The challenge many rookie teams face is developing the skills to download, compile and test all of the moving parts. 
 
-All of the software used in the tutorial is available for free through open source licenses.
+
+The purpose of this tutorial is to mentor beginning developers so they can assist experienced developers with the build / deploy / test lifecycle. The tutorial is not meant to replace the [FRC Programming Guides](http://wpilib.screenstepslive.com/s/4485), but instead to provide a simple starting point that is independent of [LabVIEW](http://www.ni.com/labview/) and [WPILib](https://usfirst.collab.net/sf/projects/wpilib/).  The tutorial takes students through all of the steps required to get the OpenCV [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example running on their computer. All of the software components are available through open source licenses.
 
 ## Learning Objectives
 
-At the end of this tutorial yyou'll understand how to:
+At the end of this tutorial you'll understand how to:
 
-1. Download and install a VM hypervisor ([Oracle VM VirtuaBox](https://www.virtualbox.org/)) to host [Ubuntu](http://www.ubuntu.com/desktop) as a guest operating system
+1. Download and install a VM hypervisor ([Oracle VM VirtualBox](https://www.virtualbox.org/)) to host [Ubuntu](http://www.ubuntu.com/desktop) as a guest operating system
 
 
 2. Use a DVD image (.iso) to install and configure [Ubuntu Desktop](http://www.ubuntu.com/download/desktop)
 
 
-3. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through 
+3. Install the [Oracle VM VirtualBox Extensions Pack](https://www.virtualbox.org/manual/ch01.html#intro-installing) to support USB devices and webcam pass-through from host to guest
 
 
 4. Search the Ubuntu software catalog to find the `terminal` program, then pin it to the start bar
@@ -29,17 +30,17 @@ At the end of this tutorial yyou'll understand how to:
 6. Use `apt-get` to refresh the package repository and install the latest Ubuntu software updates
 
 
-7. Install a USB video camera and test its operation using the [Video for Linux](http://www.linuxtv.org/) utilities and the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese)
+7. Install a USB video camera and test its operation using the [Cheese Webcam Booth](https://wiki.gnome.org/Apps/Cheese) and the [Video for Linux](http://www.linuxtv.org/) utilities
 
 
-8. Install the OpenCV prerequisites and the OpenCV sample applications, then compile and run the [facedetect](http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0) example
+8. Install the libraries needed for OpenCV development, download the sample applications, and compile and run the _facedetect_ image detection example
 
 ## Prerequisites
 
 ### Knowledge
-Before you begin you should have a working knowledge of the bash shell and common Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
+Before you begin you should have a basic working knowledge of the bash shell and Linux commands such as `ls` and `cd`, and a text editor such as `gedit`, `nano` or `vi`. 
 
-**References:** 
+**Documentation:** 
 * [linuxcommand.org](http://linuxcommand.org/)
 * William Schott's [_The Linux Command Line_](http://sourceforge.net/projects/linuxcommand/files/TLCL/13.07/TLCL-13.07.pdf/download) (free download)
 
@@ -49,7 +50,7 @@ Before you begin you should have a working knowledge of the bash shell and commo
 
 Oracle VirtualBox supports a variety of host operating systems including Windows, Linux and MacOS. Check the Oracle [support site](http://www.oracle.com/technetwork/server-storage/virtualbox/support/index.html) for the latest list. The tutorial was tested on Windows 10 Home (64-bit) with Oracle VirtualBox 5.0.10.
 
-**Tip:** if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.  If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.
+**Tip:** if you have an older 64-bit personal computer, check to see if the CPU supports Intel's virtualization technology (VT), as this is required to run a 64-bit guest operating system. Intel's [Processor Identification Utility](https://downloadcenter.intel.com/downloads/eula/7838/Intel-Processor-Identification-Utility-Windows-Version?httpDown=https%3A%2F%2Fdownloadmirror.intel.com%2F7838%2Feng%2Fpidenu42.msi) can be used to determine if your CPU supports VT.   <u>If your computer's CPU does not support VT you'll need to install the 32-bit version of Ubuntu.</u>
 			
 **Ubuntu**
 
@@ -117,9 +118,11 @@ The VirtualBox Extensions must be installed to support higher screen resolution 
 
 2. Log into the Ubuntu VM as the user _frc_. When prompted to run "VBOXADDITIONS_5.0.10_104061", click _Run_, then enter the password for the user _frc_. After the kernel has been rebuilt, press the _Enter_ key, then reboot Ubuntu
 
+3. After rebooting, log into Ubuntu. Resize the virtual machine's window to ensure that high-resolution display modes are now supported.
+
 ### Add the `terminal` application to the [Unity](https://unity.ubuntu.com/) desktop launcher
 
-The desktop launcher is the svertical list of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal. You should see the following prompt:
+The desktop launcher is the vertical menu of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal. You should see the following prompt:
 
 ```
 frc@frc-VirtualBox:~$
@@ -135,10 +138,7 @@ sudo apt-get upgrade
 ```
 **Tip:** at any point you can create a recovery checkpoint of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name.
 
-### Install the `git`, `build-essentials`, `cmake` and `v4l-utils` packages
-
-* The [`git`](http://packages.ubuntu.com/trusty/git) package allows developers to clone source code repositories and post updates
-
+### Install the `build-essential`, `cmake` and `v4l-utils` packages
 
 * The [`build-essential`](http://packages.ubuntu.com/trusty/build-essential) package provides the GNU C and C++ compilers and core libraries
 
@@ -150,7 +150,6 @@ sudo apt-get upgrade
 
 ```
 sudo apt-get install build-essential checkinstall
-sudo apt-get install git-core
 sudo apt-get install cmake
 sudo apt-get install v4l-utils
 ```
@@ -216,7 +215,6 @@ Streaming Parameters Video Capture:
 
 ```
 sudo apt-get install synaptic
-sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
 sudo apt-get install libopencv-dev
 ```
 
@@ -228,7 +226,7 @@ wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.11/open
 unzip opencv-2.4.11.zip
 ```
 
-Note: OpennCV 3.0 is the latest version of OpenCV, but Ubuntu 14.04 comes with OpenCV 2.4 already installed, allowing us to use the pre-built libraries in `/usr/lib/i386-linux-gnu`
+Note: OpenCV 3.0 is the latest version of OpenCV, but Ubuntu 14.04 comes with OpenCV 2.4 already installed, allowing us to use the pre-built libraries in `/usr/lib/i386-linux-gnu`
 
 
 3. Now change directories to the samples directory and compile `facedetect.cpp`:
@@ -246,4 +244,9 @@ g++ facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
 
 (To end the program, type ^C in the terminal window)
 
+## What's Next?
+
+The skills developed in this tutorial can be applied to programming "sidecar" boards such as the [Beaglebone](http://beagleboard.org/bone) and [NVIDIA Jetson TK1](https://developer.nvidia.com/embedded/develop/hardware).  In our next tutorial we'll use the VM to test a UDP socket-based accelerometer interface using a Beaglebone Green.
+
+### Comments or questions?  Please send them to [dshenry99@gmail.com](mailto:dshenry99@gmail.com)
 
