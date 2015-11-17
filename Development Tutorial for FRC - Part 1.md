@@ -247,9 +247,5 @@ g++ facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
 
 To end the program, type ^C in the terminal window.   If you want to experiment further, remember to take a snaphost of the VM so you can roll-back and return to where you started.
 
-## What's Next?
-
-The skills developed in this tutorial can be applied to programming "sidecar" boards such as the [Beaglebone](http://beagleboard.org/bone) and [NVIDIA Jetson TK1](https://developer.nvidia.com/embedded/develop/hardware).  In our next tutorial we'll use the VM to test a UDP socket-based accelerometer interface using a Beaglebone Green.
-
 ### Comments or questions?  Please send them to [dshenry99@gmail.com](mailto:dshenry99@gmail.com)
 
