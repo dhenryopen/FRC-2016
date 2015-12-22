@@ -1,4 +1,5 @@
 library(shiny)
+library(plotly)
 
 nrecords = nrow(robotlog)  # upper bound for slider input control
 
@@ -27,7 +28,7 @@ shinyUI(pageWithSidebar(
     
     mainPanel(
         h3(textOutput("caption")),
-        plotOutput("metricPlot"),
+        plotlyOutput("metricPlot"),
         tabPanel('metricTable',
                  dataTableOutput("tableData"))
     )

@@ -3,10 +3,11 @@ library(datasets)
 library(jsonlite)
 library(ggplot2)
 library(scales)
+library(plotly)
 
 shinyServer(function(input, output) {
     
-    output$metricPlot <- renderPlot({
+    output$metricPlot <- renderPlotly({
         
         # setup the plot based on the input variable
         
@@ -31,17 +32,14 @@ shinyServer(function(input, output) {
         upper_bound <- input$slider[2]
         plotData <- plotData[lower_bound:upper_bound,]
         
-        # plot the data
+        # plot the data using plot_ly
         
-        p <- ggplot(plotData, aes(var1, var2, colour=Mode)) + 
-            geom_line(size = 1) +
-            xlab("Time (ms)") + 
-            ylab(ylabel) +
-            theme_bw() +
-            scale_x_datetime(breaks=date_breaks("15 sec")) + 
-            stat_smooth(method="loess") 
+        p <- plot_ly(plotData, 
+                     x = var1, 
+                     y = var2, 
+                     name = ylabel)
         
-        print(p)
+        p %>% add_trace(y = fitted(loess(var2 ~ as.numeric(var1))))
     })
     
     # Render the table on the page
