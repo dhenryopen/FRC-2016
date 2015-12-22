@@ -1,8 +1,6 @@
 library(shiny)
 
-# Need to tie this variable to an API call:
-
-nrecords = as.integer(597)
+nrecords = nrow(robotlog)  # upper bound for slider input control
 
 shinyUI(pageWithSidebar(
 
