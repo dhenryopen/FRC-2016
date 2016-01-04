@@ -6,14 +6,14 @@ import pprint
 
 # Put the details of the dataset we're going to create into a dict.
 dataset_dict = {
-#   'title': '',    # default is same as "name"
-    'name': 'test13',
+    'title': 'CSV Test',    # default is same as "name"
+    'name': 'csvtest',
     # 'author': '',
     # 'author_email': '',
     # 'maintainer': '',
     # 'maintainer_email': '',
     # 'license_id': '',
-    'notes': 'test',
+    'notes': 'Comma-delimited with header row',
     # 'url': '',
     'version': '0.9',
     # 'state': '',   # default is 'active'
@@ -35,8 +35,8 @@ dataset_dict = {
 data_string = urllib.quote(json.dumps(dataset_dict))
 
 # We'll use the package_create function to create a new dataset.
-#request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_create')
-request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_update')
+request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_create')
+#request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_update')
 
 # Creating a dataset requires an authorization header.
 
