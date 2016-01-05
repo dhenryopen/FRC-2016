@@ -3,19 +3,14 @@
 import requests, json
 
 res_dict = {
-    'package_id':'csvtest',
-    # 'name': '4918.test.t1.csv',
-    'name': '4918.test.t1.json',
-    # 'description': 'A file named 4918.test.t1.csv.',
-    'description': 'A file named 4918.test.t1.json.',
+    'package_id':'csvtest2',
+    'name': '4918.test.t2.csv',
+    'description': 'A file named 4918.test.t2.csv.',
     'url' : 'http://frc.robolog.org:5000'
 }
 
 res_url = 'http://frc-robolog.org:5000/api/action/resource_create'
-auth = {'Authorization': 'c1fe0417-a8d9-49b4-a4e2-4fe18e9438d1'}
-# f = [('upload', file('/home/frc/github/FRC-2016/Robolog/ApiTest/4918.test.t1.csv'))]
-f = [('upload', file('/home/frc/github/FRC-2016/Robolog/ApiTest/4918.test.t1.json'))]
+auth = {'Authorization': 'APIKEY'}
 
+f = [('upload', file('/home/frc/github/FRC-2016/Robolog/ApiTest/4918.test.t2.csv'))]
 r = requests.post(res_url, data=res_dict, headers=auth, files=f)
-
-# 8aa6fc87-7141-478f-9e99-6cb01eedf598

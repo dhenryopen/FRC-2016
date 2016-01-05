@@ -14,6 +14,7 @@ config = ConfigParser.RawConfigParser()
 
 config.add_section('robolog')
 
+config.set('robolog', 'apikey', 'APIKEY')
 config.set('robolog', 'author', 'My Name')
 config.set('robolog', 'author_email', 'myemail@email.com')
 config.set('robolog', 'district', 'District.PNW')
@@ -22,12 +23,14 @@ config.set('robolog', 'eventlat', 'EventLat.48.101')
 config.set('robolog', 'eventlon', 'EventLon.-122.799')
 config.set('robolog', 'maintainer', 'My Name')
 config.set('robolog', 'maintainer_email', 'myemail@email.com')
-config.set('robolog', 'match', 'Match.P1')    # need a separate, simple utility to set the current match from a CLI
+config.set('robolog', 'match', 'Match.P1')      # need a separate, simple utility to set the current match from a CLI
+config.set('robolog', 'name', 'csvtest2')        # ditto for current name
 config.set('robolog', 'notes', 'Log generated during team practice')
 config.set('robolog', 'owner_org', 'team-4918')
 config.set('robolog', 'robot', 'Robot.BUSTER')
 config.set('robolog', 'teamname', 'TeamName.Roboctopi')
 config.set('robolog', 'teamnumber', 'TeamNumber.4918')
+config.set('robolog', 'url', 'NA')
 config.set('robolog', 'version', '0.9')
 
 # Write the configuration file to 'robolog.cfg'
