@@ -54,3 +54,20 @@ assert response_dict['success'] is True
 # package_create returns the created package as its result.
 created_package = response_dict['result']
 pprint.pprint(created_package)
+
+
+# author = Dave Henry
+# author_email = dshenry99@gmail.com
+# district = District.PNW
+# event = Event.PRACT
+# eventlat = EventLat.48.101
+# eventlon = EventLon.-122.799
+# maintainer = Dave Henry
+# maintainer_email = dshenry99@gmail.com
+# match = Match.P1
+# notes = Log generated during team practice
+# owner_org = team-4918
+# robot = Robot.BUSTER
+# teamname = TeamName.Roboctopi
+# teamnumber = TeamNumber.4918
+# version = 0.9
