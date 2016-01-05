@@ -20,40 +20,42 @@ def ConfigSectionMap(section):
             dict1[option] = None
     return dict1
 
-
 Config.read('robolog.cfg')  # read the site-specific settings and assign to dictionary variables
 
-apikey = ConfigSectionMap("robolog")['apikey']
-author = ConfigSectionMap("robolog")['author']
-author_email = ConfigSectionMap("robolog")['author_email']
-district = ConfigSectionMap("robolog")['district']
-event = ConfigSectionMap("robolog")['event']
-eventlat = ConfigSectionMap("robolog")['eventlat']
-eventlon = ConfigSectionMap("robolog")['eventlon']
-maintainer = ConfigSectionMap("robolog")['maintainer']
-maintainer_email = ConfigSectionMap("robolog")['maintainer_email']
-match = ConfigSectionMap("robolog")['match']
-name = ConfigSectionMap("robolog")['name']
-notes = ConfigSectionMap("robolog")['notes']
-owner_org = ConfigSectionMap("robolog")['owner_org']
-robot = ConfigSectionMap("robolog")['robot']
-teamname = ConfigSectionMap("robolog")['teamname']
-teamnumber = ConfigSectionMap("robolog")['teamnumber']
-url = ConfigSectionMap("robolog")['url']
-version = ConfigSectionMap("robolog")['version']
+ckan_apikey = ConfigSectionMap("robolog:ckan")['ckan_apikey']
+ckan_author = ConfigSectionMap("robolog:ckan")['ckan_author']
+ckan_author_email = ConfigSectionMap("robolog:ckan")['ckan_author_email']
+ckan_maintainer = ConfigSectionMap("robolog:ckan")['ckan_maintainer']
+ckan_maintainer_email = ConfigSectionMap("robolog:ckan")['ckan_maintainer_email']
+ckan_name = ConfigSectionMap("robolog:ckan")['ckan_name']
+ckan_notes = ConfigSectionMap("robolog:ckan")['ckan_notes']
+ckan_owner_org = ConfigSectionMap("robolog:ckan")['ckan_owner_org']
+ckan_url = ConfigSectionMap("robolog:ckan")['ckan_url']
+ckan_version = ConfigSectionMap("robolog:ckan")['ckan_version']
+
+cfg_file = ConfigSectionMap("robolog:frc")['cfg_file']
+district = ConfigSectionMap("robolog:frc")['district']
+event = ConfigSectionMap("robolog:frc")['event']
+eventlat = ConfigSectionMap("robolog:frc")['eventlat']
+eventlon = ConfigSectionMap("robolog:frc")['eventlon']
+match = ConfigSectionMap("robolog:frc")['match']
+robot = ConfigSectionMap("robolog:frc")['robot']
+server = ConfigSectionMap("robolog:frc")['server']
+teamname = ConfigSectionMap("robolog:frc")['teamname']
+teamnumber = ConfigSectionMap("robolog:frc")['teamnumber']
 
 # Put the details of the dataset we're going to create into a dict.
 dataset_dict = {
-    'title': name,
-    'name': name,
-    'author': author,
-    'author_email': author_email,
-    'maintainer': maintainer,
-    'maintainer_email': maintainer_email,
-    'notes': notes,
-    'owner_org': 'team-4918',
-    'url': url,
-    'version': version,
+    'title': ckan_name,
+    'name': ckan_name,
+    'author': ckan_author,
+    'author_email': ckan_author_email,
+    'maintainer': ckan_maintainer,
+    'maintainer_email': ckan_maintainer_email,
+    'notes': ckan_notes,
+    'owner_org': ckan_owner_org,
+    'url': ckan_url,
+    'version': ckan_version,
     'tags': [{'name': district},
              {'name': event},
              {'name': eventlat},
@@ -68,13 +70,13 @@ dataset_dict = {
 data_string = urllib.quote(json.dumps(dataset_dict))
 
 # We'll use the package_create function to create a new dataset.
-request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_create')
+request = urllib2.Request(server + '/api/action/package_create')
 #request = urllib2.Request('http://frc-robolog.org:5000/api/action/package_update')
 
 # Creating a dataset requires an authorization header.
 
 # frc-robolog.org
-request.add_header('Authorization', apikey)
+request.add_header('Authorization', ckan_apikey)
 
 # Make the HTTP request.
 response = urllib2.urlopen(request, data_string) #, tag_string)
