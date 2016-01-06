@@ -1,6 +1,6 @@
 #!/bin/bash
 python set_robolog_config.py \
---ckan_apikey 8aa6fc87-7141-478f-9e99-6cb01eedf598 \
+--ckan_apikey "<API Key goes here>" \
 --ckan_author "My Name" \
 --ckan_author_email myemail@email.com \
 --ckan_maintainer "My Name" \
