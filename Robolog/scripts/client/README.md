@@ -80,7 +80,7 @@ The *create_robolog_resource.sh* script gives an example of how to use the comma
 
 After running this script the new resource should be visible at [http://frc-robolog.org:5000](http://frc-robolog.org:5000)
 
-### Summary of configuration options (output of *python set_robolog_config.py -h*):
+### Summary of config options (output of *python set_robolog_config.py -h*):
 
 (See [argparse](https://docs.python.org/2/library/argparse.html) documentation for help with interpretation)
 
