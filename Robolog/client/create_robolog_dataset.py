@@ -98,6 +98,8 @@ dataset_dict = {
              {'name': teamnumber}]
 }
 
+# Make the REST call
+
 request_url = server + '/api/action/package_create'
 
 headers = {

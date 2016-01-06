@@ -64,6 +64,8 @@ resource_dict = {
     'url': ''
 }
 
+# Make the REST call
+
 request_url = server + '/api/action/resource_create'
 
 headers = {
@@ -75,8 +77,6 @@ headers = {
 file = [('upload', file(parameters.metrics_file))]
 
 print 'Attempting to upload "' + parameters.metrics_file + '" to ' + server + ' using the config file "' + parameters.config_file + '"'
-
-# Make the REST request
 
 response = requests.post(request_url, data=resource_dict, headers=headers, files=file)
 
