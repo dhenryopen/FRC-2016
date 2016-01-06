@@ -7,9 +7,9 @@
 
 import argparse
 import json
-import ConfigParser
 import requests
 import pprint
+import robolog
 
 # Define the command-line arguments
 
@@ -30,30 +30,13 @@ parameters = parser.parse_args()
 
 # Parse the configuration file values
 
-Config = ConfigParser.RawConfigParser()
-
-
-def ConfigSectionMap(section):
-    dict1 = {}
-    options = Config.options(section)
-    for option in options:
-        try:
-            dict1[option] = Config.get(section, option)
-            if dict1[option] == -1:
-                DebugPrint("skip: %s" % option)
-        except:
-            print("exception on %s!" % option)
-            dict1[option] = None
-    return dict1
-
-
-Config.read(parameters.config_file)
+robolog.Config.read(parameters.config_file)
 
 # Assign configuration values to dictionary variables
 
-ckan_apikey = ConfigSectionMap("robolog:ckan")['ckan_apikey']
-ckan_package_id = ConfigSectionMap("robolog:ckan")['ckan_name']
-server = ConfigSectionMap("robolog:frc")['server']
+ckan_apikey = robolog.ConfigSectionMap("robolog:ckan")['ckan_apikey']
+ckan_package_id = robolog.ConfigSectionMap("robolog:ckan")['ckan_name']
+server = robolog.ConfigSectionMap("robolog:frc")['server']
 
 # Create two dictionaries that we can pass to the CKAN REST API
 

@@ -8,9 +8,9 @@
 
 import argparse
 import json
-import ConfigParser
 import requests
 import pprint
+import robolog
 
 # Define the command-line arguments
 
@@ -28,50 +28,37 @@ parameters = parser.parse_args()
 
 # Parse the configuration file values
 
-Config = ConfigParser.RawConfigParser()
-
-
-def ConfigSectionMap(section):
-    dict1 = {}
-    options = Config.options(section)
-    for option in options:
-        try:
-            dict1[option] = Config.get(section, option)
-            if dict1[option] == -1:
-                DebugPrint("skip: %s" % option)
-        except:
-            print("exception on %s!" % option)
-            dict1[option] = None
-    return dict1
-
-
-Config.read(parameters.config_file)
+robolog.Config.read(parameters.config_file)
 
 # Assign configuration values to dictionary variables
 
-ckan_apikey = ConfigSectionMap("robolog:ckan")['ckan_apikey']
-ckan_author = ConfigSectionMap("robolog:ckan")['ckan_author']
-ckan_author_email = ConfigSectionMap("robolog:ckan")['ckan_author_email']
-ckan_maintainer = ConfigSectionMap("robolog:ckan")['ckan_maintainer']
-ckan_maintainer_email = ConfigSectionMap("robolog:ckan")['ckan_maintainer_email']
-ckan_name = ConfigSectionMap("robolog:ckan")['ckan_name']
-ckan_notes = ConfigSectionMap("robolog:ckan")['ckan_notes']
-ckan_owner_org = ConfigSectionMap("robolog:ckan")['ckan_owner_org']
-ckan_title = ConfigSectionMap("robolog:ckan")['ckan_title']
-ckan_version = ConfigSectionMap("robolog:ckan")['ckan_version']
+# Specific to CKAN
 
-cfg_file = ConfigSectionMap("robolog:frc")['cfg_file']
-district = ConfigSectionMap("robolog:frc")['district']
-driver = ConfigSectionMap("robolog:frc")['driver']
-event = ConfigSectionMap("robolog:frc")['event']
-eventlat = ConfigSectionMap("robolog:frc")['eventlat']
-eventlon = ConfigSectionMap("robolog:frc")['eventlon']
-match = ConfigSectionMap("robolog:frc")['match']
-robot = ConfigSectionMap("robolog:frc")['robot']
-server = ConfigSectionMap("robolog:frc")['server']
-station = ConfigSectionMap("robolog:frc")['station']
-teamname = ConfigSectionMap("robolog:frc")['teamname']
-teamnumber = ConfigSectionMap("robolog:frc")['teamnumber']
+ckan_apikey = robolog.ConfigSectionMap("robolog:ckan")['ckan_apikey']
+ckan_author = robolog.ConfigSectionMap("robolog:ckan")['ckan_author']
+ckan_author_email = robolog.ConfigSectionMap("robolog:ckan")['ckan_author_email']
+ckan_maintainer = robolog.ConfigSectionMap("robolog:ckan")['ckan_maintainer']
+ckan_maintainer_email = robolog.ConfigSectionMap("robolog:ckan")['ckan_maintainer_email']
+ckan_name = robolog.ConfigSectionMap("robolog:ckan")['ckan_name']
+ckan_notes = robolog.ConfigSectionMap("robolog:ckan")['ckan_notes']
+ckan_owner_org = robolog.ConfigSectionMap("robolog:ckan")['ckan_owner_org']
+ckan_title = robolog.ConfigSectionMap("robolog:ckan")['ckan_title']
+ckan_version = robolog.ConfigSectionMap("robolog:ckan")['ckan_version']
+
+# Specific to Robolog
+
+cfg_file = robolog.ConfigSectionMap("robolog:frc")['cfg_file']
+district = robolog.ConfigSectionMap("robolog:frc")['district']
+driver = robolog.ConfigSectionMap("robolog:frc")['driver']
+event = robolog.ConfigSectionMap("robolog:frc")['event']
+eventlat = robolog.ConfigSectionMap("robolog:frc")['eventlat']
+eventlon = robolog.ConfigSectionMap("robolog:frc")['eventlon']
+match = robolog.ConfigSectionMap("robolog:frc")['match']
+robot = robolog.ConfigSectionMap("robolog:frc")['robot']
+server = robolog.ConfigSectionMap("robolog:frc")['server']
+station = robolog.ConfigSectionMap("robolog:frc")['station']
+teamname = robolog.ConfigSectionMap("robolog:frc")['teamname']
+teamnumber = robolog.ConfigSectionMap("robolog:frc")['teamnumber']
 
 # Create a dictionary that we can pass to the CKAN REST API
 
