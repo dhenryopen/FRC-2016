@@ -9,22 +9,22 @@ import argparse
 import json
 import ConfigParser
 import requests
+import pprint
 
 # Define the command-line arguments
 
 parser = argparse.ArgumentParser(prog='create_robolog_resource',
-                                 description='A program to upload a rooblog metrics log',
+                                 description='A program to upload a Robolog metrics log',
                                  formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=50,
                                                                                      width=130))
 
 parser.add_argument('--config_file', action='store', dest='config_file', required=True,
-                    help='The name and path to the robologs config file')
-
+                    help='The name and path to the Robolog config file')
 parser.add_argument('--metrics_file', action='store', dest='metrics_file', required=True,
                     help='The name and path to the metrics file to upload')
-
 parser.add_argument('--description', action='store', dest='description', default='None',
                     help='An optional description')
+parser.add_argument('--debug', '-d', action='store_true', help='Print the result of the CKAN "resource_create" API call')
 
 parameters = parser.parse_args()
 
@@ -49,7 +49,7 @@ def ConfigSectionMap(section):
 
 Config.read(parameters.config_file)
 
-# Map command-line arguments to configuration file values
+# Assign configuration values to dictionary variables
 
 ckan_apikey = ConfigSectionMap("robolog:ckan")['ckan_apikey']
 ckan_package_id = ConfigSectionMap("robolog:ckan")['ckan_name']
@@ -57,21 +57,32 @@ server = ConfigSectionMap("robolog:frc")['server']
 
 # Create two dictionaries that we can pass to the CKAN REST API
 
-res_dict = {
+resource_dict = {
     'package_id': ckan_package_id,  # corresponds with the dataset name in the containing package
     'name': parameters.metrics_file,
     'description': parameters.description,
     'url': ''
 }
 
-res_url = server + '/api/action/resource_create'
-auth = {
+request_url = server + '/api/action/resource_create'
+
+headers = {
     'Authorization': ckan_apikey
 }
 
+# Encode the metrics log file name
+
+file = [('upload', file(parameters.metrics_file))]
+
+print 'Attempting to upload "' + parameters.metrics_file + '" to ' + server + ' using the config file "' + parameters.config_file + '"'
+
 # Make the REST request
 
-f = [('upload', file(parameters.metrics_file))]
-print 'Attempting to send ' + parameters.metrics_file + ' to ' + server + ' using the config file "' + parameters.config_file + '"'
-r = requests.post(res_url, data=res_dict, headers=auth, files=f)
+response = requests.post(request_url, data=resource_dict, headers=headers, files=file)
+
+# Optionally print the result
+
+if parameters.debug:
+    pprint.pprint(json.loads(response.content))
+
 print 'Done'

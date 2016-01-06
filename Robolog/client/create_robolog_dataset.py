@@ -6,12 +6,25 @@
 #   Log file names MUST be unique within the scope of a CKAN dataset
 #
 
-import urllib2
-import urllib
+import argparse
 import json
 import ConfigParser
 import requests
 import pprint
+
+# Define the command-line arguments
+
+parser = argparse.ArgumentParser(prog='create_robolog_dataset',
+                                 description='A program to create a container for Robolog files',
+                                 formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=50,
+                                                                                     width=130))
+
+parser.add_argument('--config_file', action='store', dest='config_file', required=True,
+                    help='The name and path to the Robolog config file')
+parser.add_argument('--debug', '-d', action='store_true',
+                    help='Print the result of the CKAN "package_create" API call')
+
+parameters = parser.parse_args()
 
 # Parse the configuration file values
 
@@ -32,7 +45,7 @@ def ConfigSectionMap(section):
     return dict1
 
 
-Config.read('robolog.cfg')
+Config.read(parameters.config_file)
 
 # Assign configuration values to dictionary variables
 
@@ -85,30 +98,21 @@ dataset_dict = {
              {'name': teamnumber}]
 }
 
-# Use the json module to dump the dictionary to a string for posting
+request_url = server + '/api/action/package_create'
 
-data_string = urllib.quote(json.dumps(dataset_dict))
+headers = {
+    'Authorization': ckan_apikey,
+    'Content-type': 'application/json'
+}
 
-# Use the "package_create" function to create a new dataset
+print 'Attempting to create dataset "' + dataset_dict[
+    'name'] + '" on ' + server + ' using the config file "' + parameters.config_file + '"'
 
-request = urllib2.Request(server + '/api/action/package_create')
+response = requests.post(request_url, data=json.dumps(dataset_dict), headers=headers)
 
-# Create an authorization header with the CKAN API
+# Optionally print the result
 
-request.add_header('Authorization', ckan_apikey)
+if parameters.debug:
+    pprint.pprint(json.loads(response.content))
 
-# Make the REST request
-
-response = urllib2.urlopen(request, data_string)
-assert response.code == 200
-
-# Use the json module to load CKAN's response into a dictionary
-
-response_dict = json.loads(response.read())
-assert response_dict['success'] is True
-
-# package_create returns the created package as its result
-# print the contents for debugging purposes
-
-created_package = response_dict['result']
-pprint.pprint(created_package)
+print 'Done'
