@@ -73,7 +73,7 @@ After running this script the new dataset should be visible at [http://frc-robol
 The *create_robolog_resource.sh* script gives an example of how to use the command line to specify the filename.  
 
 ```
-./create_robolog_resources.sh
+./create_robolog_resource.sh
 ```
 
 After running this script the new resource should be visible at [http://frc-robolog.org:5000](http://frc-robolog.org:5000)
