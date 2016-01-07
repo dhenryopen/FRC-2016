@@ -97,6 +97,6 @@
     teamname = Teamname.Roboctopi
     teamnumber = Teamnumber.4918
 
-## Robolog Repository
+## Repository
 
 The main Robolog repository is [https://github.com/juxtapose-technologies/robolog](https://github.com/juxtapose-technologies/robolog)
