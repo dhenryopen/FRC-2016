@@ -17,6 +17,11 @@
 * A Python client for configuring [metadata](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/set_robolog_config.py)
 * A Python client for creating CKAN [datasets](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_dataset.py) (packages) and [resources](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_resource.py) (log files)
 
+## Demos & Samples
+* Robolog data portal running on Microsoft Azure: [http://bit.ly/1S6eivC](http://bit.ly/1S6eivC)
+* A Shiny dashboard running on RStudio's shinyapps.io platform: [http://bit.ly/1JZChVm](http://bit.ly/1JZChVm)
+* Accessing the Robolog data portal directly from R using from [ROpenSci's](https://ropensci.org/) [ckanr](https://github.com/ropensci/ckanr) package: [bit.ly/1OPbHWn](bit.ly/1OPbHWn)
+
 ## Roadmap
 * Implement a common schema for robot metrics. This will encourage benchmarking between FRC teams and support "data harvesting" at scale. Suggestion is to evaluate the [data packages](http://dataprotocols.org/tabular-data-package/) format established by the [Open Knowledge Labs](http://okfnlabs.org/)
 * Create samples that demonstrate use of the data in various analysis and visualization tools
