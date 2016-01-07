@@ -18,7 +18,7 @@
 * A Python client for creating CKAN [datasets](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_dataset.py) (packages) and [resources](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_resource.py) (log files)
 
 ## Roadmap
-* Implement a common schema for robot metrics. This will encourage benchmarking between FRC teams and support "data harvesting" at scale. Suggestion is to evaluate the [data packages](http://dataprotocols.org/tabular-data-package/) format established by the [Open Knowledge Foundation Labs](http://okfnlabs.org/)
+* Implement a common schema for robot metrics. This will encourage benchmarking between FRC teams and support "data harvesting" at scale. Suggestion is to evaluate the [data packages](http://dataprotocols.org/tabular-data-package/) format established by the [Open Knowledge Labs](http://okfnlabs.org/)
 * Create samples that demonstrate use of the data in various analysis and visualization tools
 * Prototype a solution for error condition detection and correlation
 * Implement alternative clients (e.g. Node.js) 
