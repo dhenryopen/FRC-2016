@@ -28,74 +28,44 @@ parameters = parser.parse_args()
 
 # Parse the configuration file values
 
-robolog.Config.read(parameters.config_file)
+configuration_dict = robolog.ParseConfig(parameters.config_file)
 
-# Assign configuration values to dictionary variables
-
-# Specific to CKAN
-
-ckan_apikey = robolog.ConfigSectionMap("robolog:ckan")['ckan_apikey']
-ckan_author = robolog.ConfigSectionMap("robolog:ckan")['ckan_author']
-ckan_author_email = robolog.ConfigSectionMap("robolog:ckan")['ckan_author_email']
-ckan_maintainer = robolog.ConfigSectionMap("robolog:ckan")['ckan_maintainer']
-ckan_maintainer_email = robolog.ConfigSectionMap("robolog:ckan")['ckan_maintainer_email']
-ckan_name = robolog.ConfigSectionMap("robolog:ckan")['ckan_name']
-ckan_notes = robolog.ConfigSectionMap("robolog:ckan")['ckan_notes']
-ckan_owner_org = robolog.ConfigSectionMap("robolog:ckan")['ckan_owner_org']
-ckan_title = robolog.ConfigSectionMap("robolog:ckan")['ckan_title']
-ckan_version = robolog.ConfigSectionMap("robolog:ckan")['ckan_version']
-
-# Specific to Robolog
-
-cfg_file = robolog.ConfigSectionMap("robolog:frc")['cfg_file']
-district = robolog.ConfigSectionMap("robolog:frc")['district']
-driver = robolog.ConfigSectionMap("robolog:frc")['driver']
-event = robolog.ConfigSectionMap("robolog:frc")['event']
-eventlat = robolog.ConfigSectionMap("robolog:frc")['eventlat']
-eventlon = robolog.ConfigSectionMap("robolog:frc")['eventlon']
-match = robolog.ConfigSectionMap("robolog:frc")['match']
-robot = robolog.ConfigSectionMap("robolog:frc")['robot']
-server = robolog.ConfigSectionMap("robolog:frc")['server']
-station = robolog.ConfigSectionMap("robolog:frc")['station']
-teamname = robolog.ConfigSectionMap("robolog:frc")['teamname']
-teamnumber = robolog.ConfigSectionMap("robolog:frc")['teamnumber']
-
-# Create a dictionary that we can pass to the CKAN REST API
+# Package the CKAN API parameters for package_create()
 
 dataset_dict = {
-    'author': ckan_author,
-    'author_email': ckan_author_email,
-    'maintainer': ckan_maintainer,
-    'maintainer_email': ckan_maintainer_email,
-    'name': ckan_name.lower(),  # must be lower case and unique
-    'notes': ckan_notes,
-    'owner_org': ckan_owner_org,
-    'title': ckan_title,
-    'url': ckan_name.lower(),  # must be unique so set it to 'name' (which also must be unique)
-    'version': ckan_version,
-    'tags': [{'name': district},
-             {'name': driver},
-             {'name': event},
-             {'name': eventlat},
-             {'name': eventlon},
-             {'name': match},
-             {'name': robot},
-             {'name': station},
-             {'name': teamname},
-             {'name': teamnumber}]
+    'author': configuration_dict['ckan_author'],
+    'author_email': configuration_dict['ckan_author_email'],
+    'maintainer': configuration_dict['ckan_maintainer'],
+    'maintainer_email': configuration_dict['ckan_maintainer_email'],
+    'name': configuration_dict['ckan_name'].lower(),
+    'notes': configuration_dict['ckan_notes'],
+    'owner_org': configuration_dict['ckan_owner_org'],
+    'title': configuration_dict['ckan_title'],
+    'url': configuration_dict['ckan_name'].lower(),
+    'version': configuration_dict['ckan_version'],
+    'tags': [{'name': configuration_dict['district']},
+             {'name': configuration_dict['driver']},
+             {'name': configuration_dict['event']},
+             {'name': configuration_dict['eventlat']},
+             {'name': configuration_dict['eventlon']},
+             {'name': configuration_dict['match']},
+             {'name': configuration_dict['robot']},
+             {'name': configuration_dict['station']},
+             {'name': configuration_dict['teamname']},
+             {'name': configuration_dict['teamnumber']}]
 }
 
 # Make the REST call
 
-request_url = server + '/api/action/package_create'
+request_url = configuration_dict['server'] + '/api/action/package_create'
 
 headers = {
-    'Authorization': ckan_apikey,
+    'Authorization': configuration_dict['ckan_apikey'],
     'Content-type': 'application/json'
 }
 
 print 'Attempting to create dataset "' + dataset_dict[
-    'name'] + '" on ' + server + ' using the config file "' + parameters.config_file + '"'
+    'name'] + '" on ' + configuration_dict['server'] + ' using the config file "' + parameters.config_file + '"'
 
 response = requests.post(request_url, data=json.dumps(dataset_dict), headers=headers)
 
