@@ -5,10 +5,11 @@
 * Load telemetry data via REST APIs, then expose it in a ready-to-consume format (JSON)
 * Make the data accessible via HTTP to enable analysis in statistical environments such as [R](https://www.r-project.org/), interactive data visualization tools such as [Tableau](http://www.tableau.com/first-robotics) and [Shiny](https://www.rstudio.com/products/shiny/shiny-user-showcase/) and programs written in Python, Java, C++ and Node.js
 * Implement a simple mechanism for generating consistent metadata, i.e., common attributes such as "District", "Team", "Robot", "Match", etc.
-* Use off-the-shelf, open source, zero-cost "back-end" components that can be installed quickly and used without modification
-* Enable deployment on local servers or in a hosted environment (e.g. [Microsoft Azure](https://azure.microsoft.com/), [Amazon Web Services](https://aws.amazon.com/) and [Google Cloud](https://cloud.google.com/))
 * Support collaboration between FRC teams via data sharing and social media
 * Provide an "off-robot" environment for programming tutorials
+* Use off-the-shelf, open source, zero-cost "back-end" components that can be installed quickly and used without modification
+* Enable deployment on local servers or in a hosted environment (e.g. [Microsoft Azure](https://azure.microsoft.com/), [Amazon Web Services](https://aws.amazon.com/) and [Google Cloud](https://cloud.google.com/))
+
 
 ## Components
 * A custom LabVIEW [VI module](http://www.ni.com/pdf/manuals/372668d.pdf) that acts as a central "data logger", recording robot metrics at 100ms intervals
@@ -21,6 +22,7 @@
 * Create samples that demonstrate use of the data in various analysis and visualization tools
 * Prototype a solution for error condition detection and correlation
 * Implement alternative clients (e.g. Node.js) 
+* Test and document CKAN multi-tenancy for multi-team deployments
 
 ## Metrics (preliminary, subject to change)
     Date                 : chr  "12/22/2015" "12/22/2015" "12/22/2015" "12/22/2015" ...
