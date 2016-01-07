@@ -7,7 +7,7 @@ shinyUI(pageWithSidebar(
     
     # Application title
     
-    headerPanel("Robot Log Metrics"),
+    headerPanel("Robolog Metrics"),
     
     # Sidebar with controls to select the variable to plot against time
     
