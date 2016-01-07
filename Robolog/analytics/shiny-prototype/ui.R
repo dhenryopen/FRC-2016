@@ -1,7 +1,7 @@
 library(shiny)
 library(plotly)
 
-nrecords = nrow(robotlog)  # upper bound for slider input control
+nrecords = nrow(robolog)  # upper bound for slider input control
 
 shinyUI(pageWithSidebar(
     

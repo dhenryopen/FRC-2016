@@ -12,16 +12,16 @@ shinyServer(function(input, output) {
         # setup the plot based on the input variable
         
         if(input$variable == "pct_bus_utilization"){
-            plotData <- data.frame(var1 = robotlog$datetime, var2 = robotlog$pct_bus_utilization, Mode = robotlog$Mode)
+        plotData <- data.frame(var1 = robolog$datetime, var2 = robolog$pct_bus_utilization, Mode = robolog$Mode)
             ylabel = "Bus Utilization (%)\n"
         } else if(input$variable == "pct_cpu_low"){
-            plotData <- data.frame(var1 = robotlog$datetime, var2 = robotlog$pct_cpu_low, Mode = robotlog$Mode)
+            plotData <- data.frame(var1 = robolog$datetime, var2 = robolog$pct_cpu_low, Mode = robolog$Mode)
             ylabel = "CPU Low (%)\n"      
         } else if(input$variable == "pct_cpu_time_critical"){
-            plotData <- data.frame(var1 = robotlog$datetime, var2 = robotlog$pct_cpu_time_critical, Mode = robotlog$Mode)
+            plotData <- data.frame(var1 = robolog$datetime, var2 = robolog$pct_cpu_time_critical, Mode = robolog$Mode)
             ylabel = "CPU Time Critical (%)\n"
         } else {
-            plotData <- data.frame(var1 = robotlog$datetime, var2 = robotlog$ram_free, Mode = robotlog$Mode)
+            plotData <- data.frame(var1 = robolog$datetime, var2 = robolog$ram_free, Mode = robolog$Mode)
             ylabel = "Free RAM\n"      
         }
         
@@ -47,7 +47,7 @@ shinyServer(function(input, output) {
     output$tableData = renderDataTable({
         lower_bound <- input$slider[1]
         upper_bound <- input$slider[2]
-        tableData <- robotlog[lower_bound:upper_bound,c("datetime","pct_bus_utilization","pct_cpu_low","pct_cpu_time_critical","ram_free")]
+        tableData <- robolog[lower_bound:upper_bound,c("datetime","pct_bus_utilization","pct_cpu_low","pct_cpu_time_critical","ram_free")]
         colnames(tableData) <- c("Date / Time","Bus Utilization (%)","CPU Low (%)", "CPU Time Critical (%)","Free Ram")
         options(digits.secs=3)
         tableData
@@ -57,11 +57,11 @@ shinyServer(function(input, output) {
     
     output$downloadData <- downloadHandler(
         filename = function() { 
-           paste('robotlog', '.csv', sep='') },
+           paste('robolog', '.csv', sep='') },
         content = function(file) {
             lower_bound <- input$slider[1]
             upper_bound <- input$slider[2]
-            tableData <- robotlog[lower_bound:upper_bound,c("Date","Time","FMS Present","E-Stop","Team Station","Countdown","Code Start","Brownout","Mode","Code?","Contoller Type","Error Strings","Robot IP","DB Mode","Event Name","Event Type","Event Number","Event Replay","Camera IP","Disk Free","RM Block","RAM Free","CPU % ISR","CPU % Time Crit","CPU % Time Str","CPU % High","CPU % Above","CPU % Normal","CPU % Low","% Bus Utilization","Bus off Cnt","TX_FIFO Full Count","Receive Error Cnt","Transmit Error Cnt","HID Outputs","Rumble Low","Rumble High")
+            tableData <- robolog[lower_bound:upper_bound,c("Date","Time","FMS Present","E-Stop","Team Station","Countdown","Code Start","Brownout","Mode","Code?","Contoller Type","Error Strings","Robot IP","DB Mode","Event Name","Event Type","Event Number","Event Replay","Camera IP","Disk Free","RM Block","RAM Free","CPU % ISR","CPU % Time Crit","CPU % Time Str","CPU % High","CPU % Above","CPU % Normal","CPU % Low","% Bus Utilization","Bus off Cnt","TX_FIFO Full Count","Receive Error Cnt","Transmit Error Cnt","HID Outputs","Rumble Low","Rumble High")
 ]
             write.csv(tableData, file, row.names = FALSE)
         }
