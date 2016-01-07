@@ -27,7 +27,7 @@
 * Create samples that demonstrate use of the data in various analysis and visualization tools
 * Prototype a solution for error condition detection and correlation
 * Implement alternative clients (e.g. Node.js) 
-* Test and document CKAN multi-tenancy for multi-team deployments
+* Test and document CKAN security for multi-team deployments
 
 ## Metrics (preliminary, subject to change)
     Date                 : chr  "12/22/2015" "12/22/2015" "12/22/2015" "12/22/2015" ...
