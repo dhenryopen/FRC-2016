@@ -26,6 +26,7 @@ def ParseConfig(cfg_file):
     Config.read(cfg_file)  # e.g. read robolog.cfg
 
     # Assign configuration values to dictionary variables
+    # Values should be set by set_robolog_config.py using set_robolog_config.sh
 
     # Specific to CKAN
     section_ckan = "robolog:ckan"
