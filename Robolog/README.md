@@ -19,7 +19,7 @@
 
 ## Demos & Samples
 * Robolog data portal running on Microsoft Azure: [http://bit.ly/1S6eivC](http://bit.ly/1S6eivC)
-* A Shiny dashboard running on RStudio's shinyapps.io platform: [http://bit.ly/1JZChVm](http://bit.ly/1JZChVm)
+* A Shiny dashboard running on [RStudio's](http://www.rstudio.com) shinyapps.io platform: [http://bit.ly/1JZChVm](http://bit.ly/1JZChVm)
 * Accessing the Robolog data portal directly from R using from [ROpenSci's](https://ropensci.org/) [ckanr](https://github.com/ropensci/ckanr) package: [bit.ly/1OPbHWn](bit.ly/1OPbHWn)
 
 ## Roadmap
