@@ -7,22 +7,22 @@ import ConfigParser
 Config = ConfigParser.RawConfigParser()
 
 
-def ConfigSectionMap(section):
-    dict1 = {}
+def ParseConfigSectionMap(section):
+    dict = {}
     options = Config.options(section)
     for option in options:
         try:
-            dict1[option] = Config.get(section, option)
-            if dict1[option] == -1:
+            dict[option] = Config.get(section, option)
+            if dict[option] == -1:
                 print("skip: %s" % option)
         except:
             print("exception on %s!" % option)
-            dict1[option] = None
-    return dict1
+            dict[option] = None
+    return dict
 
 
 def ParseConfig(cfg_file):
-    dict1 = {}
+    dict = {}
     Config.read(cfg_file)  # e.g. read robolog.cfg
 
     # Assign configuration values to dictionary variables
@@ -31,32 +31,32 @@ def ParseConfig(cfg_file):
     # Specific to CKAN
     section_ckan = "robolog:ckan"
 
-    dict1['ckan_apikey'] = ConfigSectionMap(section_ckan)['ckan_apikey']
-    dict1['ckan_package_id'] = ConfigSectionMap(section_ckan)['ckan_name']
-    dict1['ckan_apikey'] = ConfigSectionMap(section_ckan)['ckan_apikey']
-    dict1['ckan_author'] = ConfigSectionMap(section_ckan)['ckan_author']
-    dict1['ckan_author_email'] = ConfigSectionMap(section_ckan)['ckan_author_email']
-    dict1['ckan_maintainer'] = ConfigSectionMap(section_ckan)['ckan_maintainer']
-    dict1['ckan_maintainer_email'] = ConfigSectionMap(section_ckan)['ckan_maintainer_email']
-    dict1['ckan_name'] = ConfigSectionMap(section_ckan)['ckan_name']
-    dict1['ckan_notes'] = ConfigSectionMap(section_ckan)['ckan_notes']
-    dict1['ckan_owner_org'] = ConfigSectionMap(section_ckan)['ckan_owner_org']
-    dict1['ckan_title'] = ConfigSectionMap(section_ckan)['ckan_title']
-    dict1['ckan_version'] = ConfigSectionMap(section_ckan)['ckan_version']
+    dict['ckan_apikey'] = ParseConfigSectionMap(section_ckan)['ckan_apikey']
+    dict['ckan_package_id'] = ParseConfigSectionMap(section_ckan)['ckan_name']
+    dict['ckan_apikey'] = ParseConfigSectionMap(section_ckan)['ckan_apikey']
+    dict['ckan_author'] = ParseConfigSectionMap(section_ckan)['ckan_author']
+    dict['ckan_author_email'] = ParseConfigSectionMap(section_ckan)['ckan_author_email']
+    dict['ckan_maintainer'] = ParseConfigSectionMap(section_ckan)['ckan_maintainer']
+    dict['ckan_maintainer_email'] = ParseConfigSectionMap(section_ckan)['ckan_maintainer_email']
+    dict['ckan_name'] = ParseConfigSectionMap(section_ckan)['ckan_name']
+    dict['ckan_notes'] = ParseConfigSectionMap(section_ckan)['ckan_notes']
+    dict['ckan_owner_org'] = ParseConfigSectionMap(section_ckan)['ckan_owner_org']
+    dict['ckan_title'] = ParseConfigSectionMap(section_ckan)['ckan_title']
+    dict['ckan_version'] = ParseConfigSectionMap(section_ckan)['ckan_version']
 
     # Specific to Robolog
     section_frc = "robolog:frc"
 
-    dict1['cfg_file'] = ConfigSectionMap(section_frc)['cfg_file']
-    dict1['district'] = ConfigSectionMap(section_frc)['district']
-    dict1['driver'] = ConfigSectionMap(section_frc)['driver']
-    dict1['event'] = ConfigSectionMap(section_frc)['event']
-    dict1['eventlat'] = ConfigSectionMap(section_frc)['eventlat']
-    dict1['eventlon'] = ConfigSectionMap(section_frc)['eventlon']
-    dict1['match'] = ConfigSectionMap(section_frc)['match']
-    dict1['robot'] = ConfigSectionMap(section_frc)['robot']
-    dict1['server'] = ConfigSectionMap(section_frc)['server']
-    dict1['station'] = ConfigSectionMap(section_frc)['station']
-    dict1['teamname'] = ConfigSectionMap(section_frc)['teamname']
-    dict1['teamnumber'] = ConfigSectionMap(section_frc)['teamnumber']
-    return dict1
+    dict['cfg_file'] = ParseConfigSectionMap(section_frc)['cfg_file']
+    dict['district'] = ParseConfigSectionMap(section_frc)['district']
+    dict['driver'] = ParseConfigSectionMap(section_frc)['driver']
+    dict['event'] = ParseConfigSectionMap(section_frc)['event']
+    dict['eventlat'] = ParseConfigSectionMap(section_frc)['eventlat']
+    dict['eventlon'] = ParseConfigSectionMap(section_frc)['eventlon']
+    dict['match'] = ParseConfigSectionMap(section_frc)['match']
+    dict['robot'] = ParseConfigSectionMap(section_frc)['robot']
+    dict['server'] = ParseConfigSectionMap(section_frc)['server']
+    dict['station'] = ParseConfigSectionMap(section_frc)['station']
+    dict['teamname'] = ParseConfigSectionMap(section_frc)['teamname']
+    dict['teamnumber'] = ParseConfigSectionMap(section_frc)['teamnumber']
+    return dict
