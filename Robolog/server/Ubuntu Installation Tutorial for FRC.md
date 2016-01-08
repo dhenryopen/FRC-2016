@@ -119,5 +119,9 @@ You now have access to the _Bash_ shell. Type the following two commands to upda
 sudo apt-get update
 sudo apt-get upgrade
 ```
-**Tip:** at any point you can create a *recovery checkpoint* of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name. This gives you the ability to "roll back" the VM to a known state.
+### Tips
+
+1. At any point you can create a *recovery checkpoint* of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name. This gives you the ability to "roll back" the VM to a known state. 
+
+2. **Always perform a controlled shutdown of Ubuntu**. An easy way to do this is the _Machine -> ACPI Shutdown_ command.
 
