@@ -9,10 +9,12 @@ The simplest way to install Robolog and CKAN is to follow this process:
 1. Create an Ubuntu server using your own hardware or a hosted VM
 2. Make the server accessible to external clients (optional)
 3. Download and configure the CKAN prerequisites (e.g. open-jdk, solr, git, postgres and python)
-4. Download the CKAN source code package
-5. Create a CKAN configuration file (development.ini)
-6. Create your Team's "robolog.cfg" file with the appropriate parameter settings
-7. Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its URL
+4. Download and install the CKAN source code package
+5. Configure CKAN-related directories and configuration files and the CKAN repository 
+6. Test your installation
+7. Clone the Robolog repository to access the client scripts and sample data
+8. Create your Team's "robolog.cfg" file with the appropriate parameter settings
+9. Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its URL
 
 ## Prerequisities
 
@@ -42,7 +44,6 @@ Install the Ubuntu package prerequisites:
 
     sudo apt-get install python-dev postgresql libpq-dev python-pip python-virtualenv git-core solr-jetty openjdk-7-jdk python-pastescript python-pylons
 
-
 Create the required CKAN directories and set permissions:
 
     cd $HOME
@@ -62,6 +63,8 @@ Setup a Python virtual environment for CKAN, then activate it in your shell:
     virtualenv --no-site-packages /usr/lib/ckan/default
     . /usr/lib/ckan/default/bin/activate
 
+## Download and install the CKAN source code package
+
 Install CKAN 2.5.1 from source:
 
     pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.5.1#egg=ckan'
@@ -69,6 +72,8 @@ Install CKAN 2.5.1 from source:
 Install the python packages required by CKAN: 
 
     pip install -r /usr/lib/ckan/default/src/ckan/requirements.txt
+
+## Configure CKAN-related directories and configuration files and the CKAN repository 
     
 Deactivate, then re-initialize the Python virtual environment
 
@@ -127,17 +132,125 @@ Initialize CKAN security, giving the 'sysadmin' account the password 'frc2016':
     cd /usr/lib/ckan/default/src/ckan
     ln -s /usr/lib/ckan/default/src/ckan/who.ini /etc/ckan/default/who.ini
     paster sysadmin add sysadmin -c /etc/ckan/default/development.ini
-    
-Start CKAN, then use Firefox to navigate to the portal:
+
+## Test your installation
+
+Start CKAN
 
     cd /usr/lib/ckan/default/src/ckan
     paster serve /etc/ckan/default/development.ini
 
-## Tips
-
-1. To start CKAN so it remains running in the backgroup after you log out of Ubuntu, type:
+*Tip*: to start CKAN so it remains running in the backgroup after you log out of Ubuntu, type:
 
     nohup serve /etc/ckan/default/development.ini &
     
+From the Ubuntu desktop, launch Firefox and navigate to the CKAN URL (http://127.0.0.1:5000).  Click "login", if you see the following log page you have successfully started CKAN:
+
+![alt text](images/login.png)
+
+Once you've logged in, click on the "sysadmin" user in the upper right hand corner of the screen:
+
+![alt text](images/sysadmin.png)
+
+At the bottom left hand side of the screen you will find your CKAN API Key. Copy this to the clipboard and save it in a file.
+
+![alt text](images/apikey.png)
+
+From the _Organizations_ menu, create an organization using your FRC team number:
+
+![alt text](images/add_organization.png)
+
+## Clone the Robolog repository to access the client scripts
+
+    cd $HOME
+    git clone https://github.com/Juxtapose-Technologies/Robolog.git
+    cd Robolog/client
+    
+## Create your Team's "robolog.cfg" file with the appropriate parameter settings
+
+Use vi (or another Linux editor) to changes the _set_robolog_cfg.sh_ file.  Replace values in "< >" with values specific to your team:
+
+    vi ./set_robolog_cfg.sh
+
+	# the following are settings in the file, not shell commands:
+	
+	--ckan_apikey <API Key> \
+    --ckan_author "My Name" \
+    --ckan_author_email myemail@email.com \
+    --ckan_maintainer "My Name" \
+    --ckan_maintainer_email myemail@email.com \
+    --ckan_name practicedata \
+    --ckan_notes "Log generated during team practice" \
+    --ckan_owner_org <team-NNNN> \
+    --ckan_title "Upload Test #1"  \
+    --ckan_version 0.9 \
+    --cfg_file robolog.cfg \
+    --district <DISTRICT> \
+    --driver <DRIVER> \
+    --event PRACT \
+    --eventlat 48.101 \
+    --eventlon -122.799 \
+    --match P1 \
+    --robot <ROBOT_NAME> \
+    --server http://127.0.0.1:5000 \
+    --station station1 \
+    --teamname <TEAMNAME> \
+    --teamnumber <TEAMNUMBER>
+ 
+*Tip*: strings with spaces should be enclosed in quotation marks
+ 
+After saving this script, execute it:
+ 
+    ./set_robolog_cfg.sh
+    
+Review the robolog.cfg file to make sure that your settings are correct:
+ 
+    cat ./robolog.cfg
+
+Execute the _create_robolog_dataset to create a "container" for our practice file
+ 
+    ./create_robolog_dataset.sh
+    
+If the dataset has been successfully created you'll see output like this:
+
+    frc@frc-VirtualBox:~/FRC-2016/Robolog/client$ ./create_robolog_dataset.sh 
+    Attempting to create dataset "practicedata" on http://127.0.0.1:5000 using the config file "robolog.cfg"
+    {u'help': u'http://127.0.0.1:5000/api/3/action/help_show?name=package_create',
+     u'result': {u'author': u'My Name',
+                 u'author_email': u'myemail@email.com',
+                 u'creator_user_id': u'34684373-3d67-4257-b5cf-351b21b0f30d',
+                 u'extras': [],
+                 u'groups': [],
+                 u'id': u'58bc513a-cd9c-409f-b856-4e40d60bfc86',
+                 u'isopen': False,
+                 u'license_id': None,
+                 u'license_title': None,
+                 u'maintainer': u'My Name',
+                 u'maintainer_email': u'myemail@email.com',
+                 u'metadata_created': u'2016-01-08T23:16:46.170005',
+                 u'metadata_modified': u'2016-01-08T23:16:46.250940',
+                 u'name': u'practicedata',
+                 u'notes': u'Log generated during team practice',
+                 u'num_resources': 0,
+                 u'num_tags': 10,
+                 u'organization': {u'approval_status': u'approved',
+                                   u'created': u'2016-01-08T15:16:40.022003',
+                                   u'description': u'',
+                                   u'id': u'720c7ff4-67ab-4939-ab0c-f17686f82646',
+                                   u'image_url': u'',
+                                   u'is_organization': True,
+     ...
+     # truncated
+
+Manually execute the create_robolog_resource.py program to load the practice dataset:
+
+    python create_robolog_resource.py --metrics_file practicedata.json --config_file robolog.cfg --description "Our first robot log upload" -d
+
+If the API 
+
+## Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its 
+    
+    
+  
     
     
