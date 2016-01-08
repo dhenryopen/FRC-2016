@@ -29,7 +29,15 @@ The following setup is recommended for a basic evaluation:
 ### Ubuntu Installation
 
 If you've never installed Ubuntu, consider following the [Ubuntu Installation Tutorial for FRC](Ubuntu Installation Tutorial for FRC.md). This tutorial will guide you through the installation of Oracle VirtualBox and Ubuntu Desktop 14.04 LTS.
- 
-### Installation
+
+## CKAN Installation and Configuration
+
+Follow these steps to install and configure CKAN (v2.5.1) and Python (v2.7.3) for use with Robolog.
+
+Install the Ubuntu package prerequisites:
+
+```
+sudo apt-get install python-dev postgresql libpq-dev python-pip python-virtualenv git-core solr-jetty openjdk-7-jdk python-pastescript python-pylons
+```
 
 ## Operations

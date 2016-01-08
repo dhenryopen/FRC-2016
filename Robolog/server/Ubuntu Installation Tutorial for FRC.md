@@ -95,7 +95,7 @@ Check the _Log in automatically_ box, then click _Continue_.  The Ubuntu install
 
 **Add the VirtualBox Extensions**
 
-The VirtualBox Extensions must be installed to support higher screen resolution, USB devices and the webcam.
+The VirtualBox Extensions must be installed to support higher screen resolution, USB devices, etc.
 
 1. From the VirtualBox main menu, select _Devices_, _Optical Drives_, and make sure that VBoxGuestAdditions.iso is checked.
 
@@ -119,9 +119,12 @@ You now have access to the _Bash_ shell. Type the following two commands to upda
 sudo apt-get update
 sudo apt-get upgrade
 ```
+
+After restarting Ubuntu you'll be ready to install and configuration applications such as CKAN.
+
 ### Tips
 
-1. At any point you can create a *recovery checkpoint* of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name. This gives you the ability to "roll back" the VM to a known state. 
+1. At any point you can create a *recovery checkpoint* of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name (e.g. "Ubuntu Baseline Image"). This gives you the ability to "roll back" the VM to a known state. 
 
 2. **Always perform a controlled shutdown of Ubuntu**. An easy way to do this is the _Machine -> ACPI Shutdown_ command.
 
