@@ -24,15 +24,13 @@ The python programs where developed on Ubuntu 14.04.1 using Python 2.7.6.  The f
 
 The shell scripts use the bash shell.
 
-### Installion
+### Installation
 
 Use _git_ to clone the repository: 
 
 ```
 git clone https://github.com/dhenryopen/FRC-2016.git
 ```
-
-(Todo: break the current repository into smaller units)
 
 ## Usage
 
