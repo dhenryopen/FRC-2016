@@ -24,24 +24,19 @@ parser.add_argument('--metrics_file', action='store', dest='metrics_file', requi
                     help='The name and path to the metrics file to upload')
 parser.add_argument('--description', action='store', dest='description', default='None',
                     help='An optional description')
-parser.add_argument('--debug', '-d', action='store_true', help='Print the result of the CKAN "resource_create" API call')
+parser.add_argument('--debug', '-d', action='store_true',
+                    help='Print the result of the CKAN "resource_create" API call')
 
 parameters = parser.parse_args()
 
 # Parse the configuration file values
 
-robolog.Config.read(parameters.config_file)
+configuration_dict = robolog.ParseConfig(parameters.config_file)
 
-# Assign configuration values to dictionary variables
-
-ckan_apikey = robolog.ConfigSectionMap("robolog:ckan")['ckan_apikey']
-ckan_package_id = robolog.ConfigSectionMap("robolog:ckan")['ckan_name']
-server = robolog.ConfigSectionMap("robolog:frc")['server']
-
-# Create two dictionaries that we can pass to the CKAN REST API
+# Package the CKAN API parameters for resource_create()
 
 resource_dict = {
-    'package_id': ckan_package_id,  # corresponds with the dataset name in the containing package
+    'package_id': configuration_dict['ckan_package_id'],  # corresponds with the dataset name in the containing package
     'name': parameters.metrics_file,
     'description': parameters.description,
     'url': ''
@@ -49,17 +44,18 @@ resource_dict = {
 
 # Make the REST call
 
-request_url = server + '/api/action/resource_create'
+request_url = configuration_dict['server'] + '/api/action/resource_create'
 
 headers = {
-    'Authorization': ckan_apikey
+    'Authorization': configuration_dict['ckan_apikey']
 }
 
 # Encode the metrics log file name
 
 file = [('upload', file(parameters.metrics_file))]
 
-print 'Attempting to upload "' + parameters.metrics_file + '" to ' + server + ' using the config file "' + parameters.config_file + '"'
+print 'Attempting to upload "' + parameters.metrics_file + '" to ' + configuration_dict[
+    'server'] + ' using the config file "' + parameters.config_file + '"'
 
 response = requests.post(request_url, data=resource_dict, headers=headers, files=file)
 

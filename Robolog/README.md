@@ -17,12 +17,17 @@
 * A Python client for configuring [metadata](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/set_robolog_config.py)
 * A Python client for creating CKAN [datasets](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_dataset.py) (packages) and [resources](https://github.com/dhenryopen/FRC-2016/blob/master/Robolog/client/create_robolog_resource.py) (log files)
 
+## Demos & Samples
+* Robolog data portal running on Microsoft Azure: [http://bit.ly/1S6eivC](http://bit.ly/1S6eivC)
+* A Shiny dashboard running on [RStudio's](http://www.rstudio.com) shinyapps.io platform: [http://bit.ly/1JZChVm](http://bit.ly/1JZChVm)
+* Accessing the Robolog data portal directly from R using from [ROpenSci's](https://ropensci.org/) [ckanr](https://github.com/ropensci/ckanr) package: [bit.ly/1OPbHWn](bit.ly/1OPbHWn)
+
 ## Roadmap
 * Implement a common schema for robot metrics. This will encourage benchmarking between FRC teams and support "data harvesting" at scale. Suggestion is to evaluate the [data packages](http://dataprotocols.org/tabular-data-package/) format established by the [Open Knowledge Labs](http://okfnlabs.org/)
 * Create samples that demonstrate use of the data in various analysis and visualization tools
 * Prototype a solution for error condition detection and correlation
 * Implement alternative clients (e.g. Node.js) 
-* Test and document CKAN multi-tenancy for multi-team deployments
+* Test and document CKAN security for multi-team deployments
 
 ## Metrics (preliminary, subject to change)
     Date                 : chr  "12/22/2015" "12/22/2015" "12/22/2015" "12/22/2015" ...
@@ -92,6 +97,6 @@
     teamname = Teamname.Roboctopi
     teamnumber = Teamnumber.4918
 
-## Robolog Repository
+## Repository
 
 The main Robolog repository is [https://github.com/juxtapose-technologies/robolog](https://github.com/juxtapose-technologies/robolog)
