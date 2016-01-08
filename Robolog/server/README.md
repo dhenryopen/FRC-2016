@@ -84,7 +84,7 @@ Create a CKAN development configuration file:
 
     paster make-config ckan /etc/ckan/default/development.ini
     
-Use vi (or gedit or nano) to make the following changes to the development.ini file:
+Use vi (or another Linux editor) to make the following changes to the development.ini file:
 
     vi /etc/ckan/default/development.ini
 	
@@ -94,7 +94,7 @@ Use vi (or gedit or nano) to make the following changes to the development.ini f
 	ckan.site_url = http://127.0.0.1:5000
 	solr_url=http://127.0.0.1:8983/solr
 
-Use vi (or gedit or nano) to make the following changes to /etc/defaut/jetty:
+Use vi (or another Linux editor) to make the following changes to /etc/defaut/jetty:
 
     sudo vi /etc/default/jetty
 
@@ -133,4 +133,11 @@ Start CKAN, then use Firefox to navigate to the portal:
     cd /usr/lib/ckan/default/src/ckan
     paster serve /etc/ckan/default/development.ini
 
-## Operations
+## Tips
+
+1. To start CKAN so it remains running in the backgroup after you log out of Ubuntu, type:
+
+    nohup serve /etc/ckan/default/development.ini &
+    
+    
+    

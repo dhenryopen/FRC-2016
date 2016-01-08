@@ -28,9 +28,7 @@ The shell scripts use the bash shell.
 
 Use _git_ to clone the repository: 
 
-```
-git clone https://github.com/dhenryopen/FRC-2016.git
-```
+    git clone https://github.com/dhenryopen/FRC-2016.git
 
 ## Usage
 
@@ -42,29 +40,23 @@ This file contains the majority of the parameters needed to create datasets and 
 
 To review *robolog.cfg*:
 
-```
-cat robolog.cfg
-```
+    cat robolog.cfg
 
 To change settings, edit *set_robolog_config.sh*:
 
-```
-vi set_robolog_config.sh
-```
+    vi set_robolog_config.sh
+
 
 To generate a new *robolog.cfg*:
 
-```
-./set_robolog_config.sh
-```
+    ./set_robolog_config.sh
 
 ### Create a CKAN dataset to hold all of the metric files for a practice day or competition event:
 
 The *create_robolog_dataset.sh* script calls a Python program that reads *robolog.cfg*:
 
-```
-./create_robolog_dataset.sh
-```
+    ./create_robolog_dataset.sh
+
 
 After running this script the new dataset should be visible at [http://frc-robolog.org:5000](http://frc-robolog.org:5000)
 
@@ -72,9 +64,7 @@ After running this script the new dataset should be visible at [http://frc-robol
 
 The *create_robolog_resource.sh* script gives an example of how to use the command line to specify the filename.  
 
-```
-./create_robolog_resource.sh
-```
+    ./create_robolog_resource.sh
 
 After running this script the new resource should be visible at [http://frc-robolog.org:5000](http://frc-robolog.org:5000)
 
