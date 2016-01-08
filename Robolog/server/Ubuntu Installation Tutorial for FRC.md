@@ -107,23 +107,19 @@ The VirtualBox Extensions must be installed to support higher screen resolution,
 
 The desktop launcher is the vertical menu of program icons on the left side of the screen.  The uppermost program lets you search your computer and online sources.  Click the icon, then type "terminal".  Click and drag the `Terminal` application to the bottom of the desktop launcher, then double-click it to open a new terminal. You should see the following prompt:
 
-```
-frc@frc-VirtualBox:~$
-```
+    frc@frc-VirtualBox:~$
 
 ### Uprade to the latest Ubuntu 14.04 packages:
 
-You now have access to the _Bash_ shell. Type the following two commands to update the system repository and upgrade to the latest  packages.  You'll be prompted to enter the _frc_ user's password to authenticate:
+You now have access to the _Bash_ shell. Type the following two commands to update the system repository and upgrade to the latest Ubuntu packages.  You'll be prompted to enter the _frc_ user's password to authenticate:
 
-```
-sudo apt-get update
-sudo apt-get upgrade
-```
+    sudo apt-get update
+    sudo apt-get upgrade
 
 After restarting Ubuntu you'll be ready to install and configuration applications such as CKAN.
 
 ### Tips
-
+ 
 1. At any point you can create a *recovery checkpoint* of your VM.  From the VirtualBox menu, select _Machine_, then _Take Snaphost_ and provide the snapshot with a name (e.g. "Ubuntu Baseline Image"). This gives you the ability to "roll back" the VM to a known state. 
 
 2. **Always perform a controlled shutdown of Ubuntu**. An easy way to do this is the _Machine -> ACPI Shutdown_ command.
