@@ -25,7 +25,7 @@
 ## Demos & Samples
 * Robolog data portal running on Microsoft Azure: [http://bit.ly/1S6eivC](http://bit.ly/1S6eivC)
 * A Shiny dashboard running on [RStudio's](http://www.rstudio.com) shinyapps.io platform: [http://bit.ly/1JZChVm](http://bit.ly/1JZChVm)
-* Accessing the Robolog data portal directly from R using from [ROpenSci's](https://ropensci.org/) [ckanr](https://github.com/ropensci/ckanr) package:[bit.ly/1OPbHWn](http://bit.ly/1OPbHWn)
+* Accessing the Robolog data portal directly from R using from [ROpenSci's](https://ropensci.org/)[ckanr](https://github.com/ropensci/ckanr) package: [bit.ly/1OPbHWn](http://bit.ly/1OPbHWn)
 
 ## Roadmap
 * Implement a common schema for robot metrics. This will encourage benchmarking between FRC teams and support "data harvesting" at scale. Suggestion is to evaluate the [data packages](http://dataprotocols.org/tabular-data-package/) format established by the [Open Knowledge Labs](http://okfnlabs.org/)
