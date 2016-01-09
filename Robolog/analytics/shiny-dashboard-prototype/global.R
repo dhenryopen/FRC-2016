@@ -34,8 +34,7 @@ search_results <- resource_search(q = 'name:4918' , as = 'table')
 ### Get the 2nd resource id -- this is our "golden JSON record" for testing & demonstration
 
 resource_url <-
-    #   search_results$results[c('url')][1,] # First resource is a .csv file
-    search_results$results[c('url')][2,] # Second resource is a .json file
+    search_results$results[c('url')][1,] # resource is a .json file
 
 ### Get the extension (should be .csv or .json)
 
@@ -46,7 +45,7 @@ resource_ext <- tools::file_ext(resource_url)
 if (resource_ext == "json") {
     robolog <- fromJSON(resource_url)
     
-} else if (resource_ext == "csv") {
+} else if (resource_ext == "csv") {    # note: currently have an issue with the sample CSV file structure
     robolog <- read.csv(resource_url)
     
 } 
