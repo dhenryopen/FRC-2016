@@ -47,16 +47,18 @@ Install the Ubuntu package prerequisites:
 Create the required CKAN directories and set permissions:
 
     cd $HOME
-
-    sudo mkdir -p /usr/lib/ckan/default
-    sudo chown `whoami` /usr/lib/ckan/default
-    sudo mkdir -p /usr/lib/ckan/default/resources
-    sudo chown `whoami` /usr/lib/ckan/default/resources
-
     mkdir -p ~/ckan/lib
     sudo ln -s ~/ckan/lib /usr/lib/ckan
     mkdir -p ~/ckan/etc
     sudo ln -s ~/ckan/etc /etc/ckan
+    
+    sudo mkdir -p /usr/lib/ckan/default
+    sudo chown `whoami` /usr/lib/ckan/default
+    sudo mkdir -p /usr/lib/ckan/default
+    sudo chown `whoami` /usr/lib/ckan/default
+
+    sudo mkdir  /var/lib/ckan
+    sudo chown `whoami` /var/lib/ckan
     
 Setup a Python virtual environment for CKAN, then activate it in your shell:
 
@@ -98,6 +100,8 @@ Use vi (or another Linux editor) to make the following changes to the developmen
 	sqlalchemy.url = postgresql://ckan_default:frc2016@localhost/ckan_default
 	ckan.site_url = http://127.0.0.1:5000
 	solr_url=http://127.0.0.1:8983/solr
+	ckan.storage_path = /var/lib/ckan
+
 
 Use vi (or another Linux editor) to make the following changes to /etc/defaut/jetty:
 
@@ -207,6 +211,8 @@ Review the robolog.cfg file to make sure that your settings are correct:
  
     cat ./robolog.cfg
 
+## Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its URL
+
 Execute the _create_robolog_dataset to create a "container" for our practice file
  
     ./create_robolog_dataset.sh
@@ -244,11 +250,52 @@ If the dataset has been successfully created you'll see output like this:
 
 Manually execute the create_robolog_resource.py program to load the practice dataset:
 
-    python create_robolog_resource.py --metrics_file practicedata.json --config_file robolog.cfg --description "Our first robot log upload" -d
+    python create_robolog_resource.py --metrics_file practicedata.json --config_file robolog.cfg --description "Our first data upload" -d
 
-If the API 
+If the file has been successfully upload you'll see output like this:
 
-## Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its 
+    (default)frc@frc-VirtualBox:~/FRC-2016/Robolog/client$ ./create_robolog_resource.sh 
+    Attempting to upload "practicedata.json" to http://127.0.0.1:5000 using the config file "robolog.cfg"
+    {u'help': u'http://127.0.0.1:5000/api/3/action/help_show?name=resource_create',
+     u'result': {u'cache_last_updated': None,
+                 u'cache_url': None,
+                 u'created': u'2016-01-08T16:15:06.412852',
+                 u'description': u'Our first data upload',
+                 u'format': u'JSON',
+                 u'hash': u'',
+                 u'id': u'a0680ee0-c7de-45cb-8b60-c8b42474bd3c',
+                 u'last_modified': u'2016-01-09T00:15:06.298837',
+                 u'mimetype': None,
+                 u'mimetype_inner': None,
+                 u'name': u'practicedata.json',
+                 u'package_id': u'4b11daaf-abe5-4a22-8b1d-67f899fcd659',
+                 u'position': 0,
+                 u'resource_type': None,
+                 u'revision_id': u'3faff7b0-f01d-4ccd-a025-8616c3bb7e55',
+                 u'size': None,
+                 u'state': u'active',
+                 u'url': u'http://127.0.0.1:5000/dataset/4b11daaf-abe5-4a22-8b1d-67f899fcd659/resource/a0680ee0-c7de-45cb-8b60-c8b42474bd3c/download/practicedata.json',
+                 u'url_type': u'upload',
+                 u'webstore_last_updated': None,
+                 u'webstore_url': None},
+     u'success': True}
+    Done
+
+To verify and view the uploaded metrics file, click on "Datasets', then click on "Upload Test #1" : 
+
+![alt text](images/successful_dataset.png)
+
+Select "Explore" on the button next to "practicedata.json":
+
+![alt text](images/successful_resource.png)
+
+Click on the URL:
+
+![alt text](images/more_information_resource.png)
+
+You should see raw JSON output similar to this:
+
+![alt text](images/json_output.png)
     
     
   
