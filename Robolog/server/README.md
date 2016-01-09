@@ -114,7 +114,7 @@ Use vi (or another Linux editor) to make the following changes to /etc/defaut/je
 	JETTY_PORT=8983
 	JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 
-Configure SOLR to work with CKAN:
+Configure Solr to work with CKAN:
 
     sudo mv /etc/solr/conf/schema.xml /etc/solr/conf/schema.xml.bak
     sudo ln -s /usr/lib/ckan/default/src/ckan/ckan/config/solr/schema.xml /etc/solr/conf/schema.xml
