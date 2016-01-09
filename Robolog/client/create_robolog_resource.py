@@ -39,7 +39,8 @@ resource_dict = {
     'package_id': configuration_dict['ckan_package_id'],  # corresponds with the dataset name in the containing package
     'name': parameters.metrics_file,
     'description': parameters.description,
-    'url': ''
+ #   'url': configuration_dict['ckan_name'].lower()
+    'url' : ''
 }
 
 # Make the REST call
