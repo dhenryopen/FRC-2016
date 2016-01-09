@@ -119,7 +119,7 @@ Configure SOLR to work with CKAN:
     sudo mv /etc/solr/conf/schema.xml /etc/solr/conf/schema.xml.bak
     sudo ln -s /usr/lib/ckan/default/src/ckan/ckan/config/solr/schema.xml /etc/solr/conf/schema.xml
 
-Download and install JSP support for Jetty, then start the service:
+Download and install JSP support for Jetty, then restart the service:
 
     cd $HOME/Downloads
     wget 'https://maven-us.nuxeo.org/nexus/content/repositories/public/jetty/jsp/2.1-6.0.2/jsp-2.1-6.0.2.jar'
