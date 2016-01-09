@@ -19,8 +19,8 @@
 
 ## Getting Started
 
-* If you need to install Ubuntu, follow the directions in the [Ubuntu Installation Tutorial for FRC](Ubuntu Installation Tutorial for FRC.md).
-* If you already have access to Ubuntu Desktop 14.04 LTS (64-bit), proceed to the [Robolog Server setup guide](server/README.md) 
+* If you need to install Ubuntu, follow the directions in the [Ubuntu Installation Tutorial for FRC](server/Ubuntu Installation Tutorial for FRC.md)
+* If you already have access to Ubuntu Desktop 14.04 LTS (64-bit), proceed to the [Robolog Server](server/README.md) setup guide 
 
 ## Demos & Samples
 * Robolog data portal running on Microsoft Azure: [http://bit.ly/1S6eivC](http://bit.ly/1S6eivC)
