@@ -12,13 +12,13 @@ The simplest way to install Robolog and CKAN is to follow this process:
 4. Download and install the CKAN source code package
 5. Configure CKAN-related directories and configuration files and the CKAN repository 
 6. Test your installation
-7. Clone the Robolog repository to access the client scripts and sample data
+7. Clone the Robolog github repository to access the client scripts and sample data
 8. Create your Team's "robolog.cfg" file with the appropriate parameter settings
-9. Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its URL
+9. Load a sample telemetry file and verify that it's both visible in the CKAN portal and accessible via its URL
 
 ## Prerequisities
 
-This guide summarizes the [Install CKAN from Source](http://docs.ckan.org/en/latest/maintaining/installing/install-from-source.html) documentation on the CKAN website. Consult this guide for complete information.
+This guide summarizes the [Install CKAN from Source](http://docs.ckan.org/en/latest/maintaining/installing/install-from-source.html) documentation on the CKAN website. Consult that site for complete information.
 
 The following setup is recommended for a basic evaluation:
 
@@ -26,11 +26,11 @@ The following setup is recommended for a basic evaluation:
 * 4.0GB (4096MB) of RAM
 * 10GB of disk space (minimum). Each Robolog telemetry file will use between 2MB-3MB of space (uncompressed).
 
-The installation will use CKAN 2.5.1 and Python 2.7.6.
+The guide assumes the use of CKAN 2.5.1 and Python 2.7.6.
 
 ## Create an Ubuntu server using your own hardware or a hosted VM
 
-If you've never installed Ubuntu, consider following the [Ubuntu Installation Tutorial for FRC](Ubuntu Installation Tutorial for FRC.md). This tutorial will guide you through the installation of Oracle VirtualBox and Ubuntu Desktop 14.04 LTS.
+If you've never installed Ubuntu, consider following the [Ubuntu Installation Tutorial for FRC](Ubuntu Installation Tutorial for FRC.md). That tutorial will guide you through the installation of Oracle VirtualBox and Ubuntu Desktop 14.04 LTS.
 
 ## Make the server accessible to external clients (optional)
 
@@ -67,7 +67,7 @@ Setup a Python virtual environment for CKAN, then activate it in your shell:
 
 ## Download and install the CKAN source code package
 
-Install CKAN 2.5.1 from source:
+Install the CKAN software from source:
 
     pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.5.1#egg=ckan'
     
@@ -172,7 +172,7 @@ From the _Organizations_ menu, create an organization using your FRC team number
     
 ## Create your Team's "robolog.cfg" file with the appropriate parameter settings
 
-Use vi (or another Linux editor) to changes the _set_robolog_cfg.sh_ file.  Replace values in "< >" with values specific to your team:
+Use vi (or another Linux editor) to changes the _set_robolog_cfg.sh_ file.  Replace values in "< >" with values specific to your installation and team:
 
     vi ./set_robolog_cfg.sh
 
