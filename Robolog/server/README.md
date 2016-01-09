@@ -34,7 +34,7 @@ If you've never installed Ubuntu, consider following the [Ubuntu Installation Tu
 
 ## Make the server accessible to external clients (optional)
 
-A publicly-visible IP address is required if you want to access CKAN from external web browsers and programs. Network setup will vary depending on how Ubuntu has been deployed. For VirtualBox see the VirtualBox documentation section on [virtual networking](http://www.virtualbox.org/manual/ch06.html)
+A publicly-visible IP address is required if you want to access CKAN from external web browsers and programs. Network setup will vary depending on how Ubuntu has been deployed. For VirtualBox see the VirtualBox documentation section on [virtual networking](http://www.virtualbox.org/manual/ch06.html).
 
 NOTE: this is an optional step. You can use Firefox from the Ubuntu desktop to connect to CKAN locally. If you decide to configure Ubuntu as a network host, change the "127.0.0.1" references below to the assigned IP address for your Ubuntu instance.
 
@@ -201,7 +201,7 @@ Use vi (or another Linux editor) to changes the _set_robolog_cfg.sh_ file.  Repl
     --teamname <TEAMNAME> \
     --teamnumber <TEAMNUMBER>
  
-*Tip*: strings with spaces should be enclosed in quotation marks
+*Tip*: strings with spaces should be enclosed in quotation marks.
  
 After saving this script, execute it:
  
@@ -213,7 +213,7 @@ Review the robolog.cfg file to make sure that your settings are correct:
 
 ## Load a sample telemetry log file and verify that it's visible in the CKAN portal and accessible via its URL
 
-Execute the _create_robolog_dataset to create a "container" for our practice file
+Execute the _create_robolog_dataset to create a "container" for our practice file:
  
     ./create_robolog_dataset.sh
     
